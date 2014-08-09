@@ -13,10 +13,14 @@ var UserView = React.createClass({
 
   render: function() {
     return (
-      <div>
-        User View
-        <h2>{this.props.params}</h2>
-      </div>
+      <RB.Row>
+        <RB.Col sm={3}>
+          {this.props.params}
+        </RB.Col>
+        <RB.Col sm={9}>
+          {this.props.params}
+        </RB.Col>
+      </RB.Row>
     );
   }
 });

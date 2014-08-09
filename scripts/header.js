@@ -14,7 +14,7 @@ var Header = React.createClass({
   },
 
   render: function(){
-    var logoText = "GitStar - organize your GitHub stars",
+    var logoText = "Learnot",
     loginButton = <a href="#" onClick={this.onLogin}>Login</a>,
     logoutButton = <a href="#" onClick={this.onLogout}>Logout</a>;
 

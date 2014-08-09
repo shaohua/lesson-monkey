@@ -13,6 +13,14 @@ var Actions = {
     vent.trigger('auth:logout');
   },
 
+  createFolder: function(){
+    vent.trigger('folder:create');
+  },
+
+  updateFolder: function(payload){
+    vent.trigger('folder:update', payload);
+  },
+
   offFirebase: function(){
     vent.trigger('firebase:off');
   }

@@ -12,7 +12,8 @@ var _getStateFromStore = function(myStore){
   //myStore is NO longer a Backbone model
   // console.log('myStore', myStore);
   return {
-    user: myStore.user
+    user: myStore.user,
+    folders: myStore.folders || []
   };
 };
 
@@ -61,7 +62,7 @@ var AppView = React.createClass({
           </RB.Col>
           <RB.Col sm={9} className="ln-column-right">
             column-right
-            <this.props.activeRouteHandler/>
+            <this.props.activeRouteHandler data={this.state}/>
           </RB.Col>
         </RB.Row>
       </RB.Grid>

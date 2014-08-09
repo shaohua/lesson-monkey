@@ -18,12 +18,17 @@ var firebaseAuth;
 //todo
 //use a better one
 var deepcopy = function(input){
+  if(typeof input === 'undefined') return undefined;
   return JSON.parse(JSON.stringify(input));
 };
 
 /**
  * Init data
  */
+var defaultFolder = {
+  name: 'defaultFolder',
+  cards: {}
+};
 
 var _initStore = function(userId){
   var FirebaseModel = Backbone.Firebase.Model.extend({
@@ -79,6 +84,21 @@ vent.on('auth:logout', function(){
   firebaseAuth.logout();
   //true to reload from the server rather than the cache
   location.reload(true);
+});
+
+
+/**
+ * For folders
+ */
+
+vent.on('folder:create', function(){
+  var foldersCopy = deepcopy(Store.get('folders'));
+  foldersCopy = foldersCopy || [];
+  var newFolderName = 'Folder ' + foldersCopy.length;
+  var newFolder = _.extend({}, defaultFolder, {name: newFolderName});
+  foldersCopy.push(newFolder);
+
+  Store.set('folders', foldersCopy);
 });
 
 

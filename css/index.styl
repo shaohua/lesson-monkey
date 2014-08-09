@@ -1,23 +1,66 @@
 body {
-  background-color: #FFFFFF;
+  background-color: #E5E5E5;
   padding-top: 60px;
 }
 
-.card-row {
-  display: table-row;
+.card-panel {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
 
-  .card-col {
-    display: table-cell;
-    float: none;
-    vertical-align: top;
-  }
+  .card-panel-body {
+    display: table;
+    min-height: 150px;
+    padding: 0;
 
-  .card-right-col {
-    position: relative;
-    .card-right-bottom-col {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+    .card-row {
+      display: table-row;
+      height: 100%;
+      background-color: #F5F5F5;
+      &:before, &:after {
+        //remve bootstrap default
+        content: none;
+      }
+
+      .card-col {
+        display: table-cell;
+        float: none;
+        vertical-align: top;
+      }
+
+      .card-left-col {
+        vertical-align: middle;
+      }
+
+      .card-right-col {
+        background-color: #FFFFFF;
+        position: relative;
+        .card-right-bottom-col {
+          position: absolute;
+          bottom: 0;
+          right: 2px;
+        }
+      }
     }
   }
+}
+
+.green-sea {
+  background-color: #17ab8e !important;
+}
+
+.nephritis {
+  background-color: #27ae60 !important;
+}
+
+.belize-hole {
+  background-color: #2980b9 !important;
+}
+
+.wisteria {
+  background-color: #8e44ad !important;
+}
+
+.midnight-blue {
+  background-color: #8e44ad !important;
 }

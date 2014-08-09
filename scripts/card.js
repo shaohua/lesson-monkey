@@ -15,33 +15,41 @@ var Card = React.createClass({
     // console.log('onDragEnd');
   },
 
+  getRandomBgColor: function(){
+    var bgColorList = ['green-sea', 'nephritis', 'belize-hole', 'wisteria', 'midnight-blue'];
+    return _.sample(bgColorList);
+  },
+
   render: function(){
     var card = this.props.card,
       cardId = this.props.cardId;
+
+    var rowClass = 'card-row ' + this.getRandomBgColor();
+
     return (
       <div
         draggable="true"
         onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
         className="col-lg-6 col-md-6">
-        <div className="panel panel-success">
-          <div className="panel-body">
-            <RB.Row className='card-row'>
+        <div className="panel panel-success card-panel">
+          <div className="panel-body card-panel-body">
+            <RB.Row className={rowClass}>
               <RB.Col xs={6} className='card-col card-left-col'>
                 <img
-                  src={card.avatar_url}
+                  src={card.imgUrl}
                   className="img-responsive"/>
               </RB.Col>
               <RB.Col xs={6} className='card-col card-right-col'>
                 <div>
-                  Title
+                  <h5>{card.title.substring(0,10) + '..'}</h5>
                 </div>
                 <div>
-                  Body
+                  {card.content.substring(0,60) + '..'}
                 </div>
                 <div className='card-right-bottom-col'>
-                  <a href={card.html_url} target='_blank'>
-                    {card.full_name}
+                  <a href={card.htmlUrl} target='_blank'>
+                    Read Original Article
                   </a>
                 </div>
               </RB.Col>

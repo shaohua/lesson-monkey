@@ -1,0 +1,26 @@
+{
+  "name": "learnot",
+  "version": "0.0.1",
+  "homepage": "https://github.com/shaohua/learnot",
+  "authors": [
+    "Shaohua <sh.zhou@gmail.com>"
+  ],
+  "license": "All rights reserved",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.1",
+    "react": "~0.11.0",
+    "underscore": "~1.6.0",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "react-bootstrap": "~0.11.0",
+    "font-awesome": "~4.1.0",
+    "backbone": "~1.1.2"
+  }
+}

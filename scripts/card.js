@@ -20,6 +20,10 @@ var Card = React.createClass({
     return _.sample(bgColorList);
   },
 
+  onClickCard: function(){
+    console.log('onClickCard');
+  },
+
   render: function(){
     var card = this.props.card,
       cardId = this.props.cardId;
@@ -31,6 +35,7 @@ var Card = React.createClass({
         draggable="true"
         onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
+        onClick={this.onClickCard}
         className="col-lg-6 col-md-6">
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">

@@ -13,6 +13,10 @@ var FolderView = React.createClass({
     return {};
   },
 
+  onClickNewCard: function(){
+    console.log('onClickNewCard');
+  },
+
   render: function() {
     var cards = [];
     var fakeCard = {
@@ -27,9 +31,29 @@ var FolderView = React.createClass({
       return (<Card cardId={card.id} card={card} />);
     });
 
+    var newCard = (
+      <div
+        onClick={this.onClickNewCard}
+        className="col-lg-6 col-md-6">
+        <div className="panel panel-success card-panel">
+          <div className="panel-body card-panel-body">
+            <RB.Row className='card-row'>
+              <RB.Col xs={12} className='card-col'>
+                <input
+                  type="text"
+                  className='card-url-input'/>
+                <RB.Button>Add URL</RB.Button>
+              </RB.Col>
+            </RB.Row>
+          </div>
+        </div>
+      </div>
+    );
+
     return (
       <RB.Row>
         <RB.Col sm={12}>
+          {newCard}
           {cards}
         </RB.Col>
       </RB.Row>

@@ -4,6 +4,7 @@ var _ = require('underscore'),
   React = require('react'),
   RB = require('react-bootstrap'),
   Header = require('./header'),
+  Link = ReactRouter.Link,
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -45,14 +46,15 @@ var AppView = React.createClass({
   },
 
   render: function() {
-    var loggedIn = (
-      <RB.Grid>
+    var mainDiv = (
+      <RB.Grid className='main'>
         <RB.Row>
-          <RB.Col sm={3}>
-          3
+          <RB.Col sm={3} className="gs-column-groups">
+            left
           </RB.Col>
-          <RB.Col sm={9}>
-          9
+          <RB.Col sm={9} className="gs-column-repos col-sm-offset-3">
+            right
+            <this.props.activeRouteHandler/>
           </RB.Col>
         </RB.Row>
       </RB.Grid>
@@ -62,12 +64,14 @@ var AppView = React.createClass({
       return (
         <div>
           <Header user={this.state.user}/>
+          {mainDiv}
         </div>
       );
     } else {
       return (
         <div>
           <Header />
+          {mainDiv}
         </div>
       );
     }

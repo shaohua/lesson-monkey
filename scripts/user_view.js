@@ -20,8 +20,6 @@ var UserView = React.createClass({
             data={this.props.data}/>
         </RB.Col>
         <RB.Col sm={9}>
-          <RB.Button><RB.Glyphicon glyph="plus" /> Add card</RB.Button>
-          {this.props.params}
           <this.props.activeRouteHandler data={this.props.data}/>
         </RB.Col>
       </RB.Row>

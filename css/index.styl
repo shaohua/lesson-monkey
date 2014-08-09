@@ -2,3 +2,22 @@ body {
   background-color: #FFFFFF;
   padding-top: 60px;
 }
+
+.card-row {
+  display: table-row;
+
+  .card-col {
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+  }
+
+  .card-right-col {
+    position: relative;
+    .card-right-bottom-col {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}

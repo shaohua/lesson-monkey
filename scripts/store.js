@@ -33,7 +33,7 @@ var _initStore = function(userId){
   Store = new FirebaseModel();
 
   //fill defaults after loading
-  Store.firebase.on('value', function(){
+  Store.firebase.on('value', function(storeSnap){
     console.log('storeSnap', storeSnap.val());
 
   });
@@ -50,7 +50,6 @@ vent.on('auth', function(){
   //the user's authentication state changed
   firebaseAuth = new FirebaseSimpleLogin(firebaseRef, function(error, user) {
     if (error) return;
-
     if(user && user.id) {
       //bind the store to a dynamic URL
       _initStore(user.id);
@@ -59,8 +58,7 @@ vent.on('auth', function(){
         id: user.id,
         uid: user.uid,
         provider: user.provider,
-        username: user.username,
-        accessToken: user.accessToken
+        username: user.username
       };
 
       Store.set({

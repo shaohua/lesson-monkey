@@ -3,6 +3,7 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   RB = require('react-bootstrap'),
+  Header = require('./header'),
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -60,13 +61,13 @@ var AppView = React.createClass({
     if(this.state.user) {
       return (
         <div>
-          loggedIn
+          <Header user={this.state.user}/>
         </div>
       );
     } else {
       return (
         <div>
-          loggedOut
+          <Header />
         </div>
       );
     }

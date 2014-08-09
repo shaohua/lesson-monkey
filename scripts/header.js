@@ -2,21 +2,24 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  Link = ReactRouter.Link,
   Actions = require('./actions');
 
 var Header = React.createClass({
-  onLogin: function(){
+  onLogin: function(event){
     Actions.authLogin();
+    event.preventDefault();
   },
 
-  onLogout: function(){
+  onLogout: function(event){
     Actions.authLogout();
+    event.preventDefault();
   },
 
   render: function(){
     var logoText = "Learnot",
-    loginButton = <a href="#" onClick={this.onLogin}>Login</a>,
-    logoutButton = <a href="#" onClick={this.onLogout}>Logout</a>;
+    loginButton = <a href="/" onClick={this.onLogin}>Login</a>,
+    logoutButton = <a href="/" onClick={this.onLogout}>Logout</a>;
 
     return (
       <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,9 +31,15 @@ var Header = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">{logoText}</a>
+            <a className="navbar-brand" href="/">{logoText}</a>
           </div>
+
           <div className="navbar-collapse collapse">
+            <ul className="nav navbar-nav">
+              <li><Link to="/user/wei">Wei</Link></li>
+              <li><Link to="/user/shao">Shao</Link></li>
+            </ul>
+
             <ul className="nav navbar-nav navbar-right">
               <li>
                 {this.props.user ? logoutButton : loginButton}

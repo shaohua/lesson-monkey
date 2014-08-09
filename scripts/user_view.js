@@ -14,7 +14,8 @@ var UserView = React.createClass({
   render: function() {
     return (
       <div>
-        User View{this.props.params}
+        User View
+        <h2>{this.props.params}</h2>
       </div>
     );
   }

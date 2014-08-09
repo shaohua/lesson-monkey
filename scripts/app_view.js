@@ -49,10 +49,10 @@ var AppView = React.createClass({
     var mainDiv = (
       <RB.Grid className='main'>
         <RB.Row>
-          <RB.Col sm={3} className="gs-column-groups">
+          <RB.Col sm={3} className="ln-column-left">
             left
           </RB.Col>
-          <RB.Col sm={9} className="gs-column-repos col-sm-offset-3">
+          <RB.Col sm={9} className="ln-column-right col-sm-offset-3">
             right
             <this.props.activeRouteHandler/>
           </RB.Col>

@@ -6,6 +6,7 @@ var _ = require('underscore'),
   AppView = require('./app_view'),
   UserView = require('./user_view'),
   FolderView = require('./folder_view'),
+  HomeView = require('./home_view'),
   Routes = ReactRouter.Routes,
   Route = ReactRouter.Route,
   Link = ReactRouter.Link;
@@ -17,6 +18,8 @@ $(document).ready(function(){
         <Route name="user" path="/user/:userName" handler={UserView}>
           <Route name="folder" path="/user/:userName/folder/:folderName" handler={FolderView}/>
         </Route>
+      </Route>
+      <Route name="home" path="/home" handler={HomeView}>
       </Route>
     </Routes>
   ), $('#main-app')[0]);

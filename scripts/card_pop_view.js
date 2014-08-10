@@ -30,17 +30,25 @@ var CardPopView = React.createClass({
             </RB.Col>
             <RB.Col xs={6} className='card-col card-right-col'>
               <div>
-                <h5>{card.title.substring(0,10) + '..'}</h5>
+                <h2>{card.title}</h2>
               </div>
               <div>
-                {card.content.substring(0,60) + '..'}
+                {card.content}
               </div>
               <div className='card-right-bottom-col'>
+                <span className="icon icon-edit"></span>
+                <span>&nbsp;</span>
                 <a href={card.htmlUrl} target='_blank'>
                   Read Original Article
                 </a>
               </div>
             </RB.Col>
+            <div className="card-nav-prev">
+              <span className="icon icon-left-nav"></span>
+            </div>
+            <div className="card-nav-next">
+              <span className="icon icon-right-nav"></span>
+            </div>
           </RB.Row>
         </div>
       </div>

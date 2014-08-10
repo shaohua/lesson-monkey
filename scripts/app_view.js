@@ -49,35 +49,21 @@ var AppView = React.createClass({
   },
 
   render: function() {
-    var mainDiv = (
-      <RB.Grid className='main'>
-        <RB.Row>
-          <RB.Col sm={2} className="ln-column-left">
-            <ProfileCard />
-          </RB.Col>
-          <RB.Col sm={10} className="ln-column-right">
-            <this.props.activeRouteHandler data={this.state}/>
-          </RB.Col>
-        </RB.Row>
-      </RB.Grid>
+    var user = this.state.user || '';
+    return (
+      <div>
+        <Header user={this.state.user}/>
+        <RB.Grid className='main'>
+          <RB.Row>
+            <RB.Col sm={12}>
+              <this.props.activeRouteHandler data={this.state}/>
+            </RB.Col>
+          </RB.Row>
+        </RB.Grid>
+      </div>
     );
-
-    if(this.state.user) {
-      return (
-        <div>
-          <Header user={this.state.user}/>
-          {mainDiv}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Header />
-          {mainDiv}
-        </div>
-      );
-    }
   }
+
 });
 
 module.exports = AppView;

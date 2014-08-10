@@ -101,6 +101,22 @@ vent.on('folder:create', function(){
   Store.set('folders', foldersCopy);
 });
 
+/**
+ * For cards
+ */
+vent.on('card:create', function(payload){
+  console.log('card:create', payload);
+  for(var key in payload) {
+    if(payload.hasOwnProperty(key)){
+      payload[key] = payload[key] || '';
+    }
+  }
+  var cardsCopy = deepcopy(Store.get('cards'));
+  cardsCopy = cardsCopy || [];
+  cardsCopy.push(payload);
+
+  Store.set('cards', cardsCopy);
+});
 
 /**
  * For Firebase

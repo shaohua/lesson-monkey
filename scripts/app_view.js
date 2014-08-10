@@ -13,7 +13,8 @@ var _getStateFromStore = function(myStore){
   // console.log('myStore', myStore);
   return {
     user: myStore.user,
-    folders: myStore.folders || []
+    folders: myStore.folders || [],
+    cards: myStore.cards || []
   };
 };
 

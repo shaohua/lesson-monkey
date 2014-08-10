@@ -2,7 +2,8 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
-  RB = require('react-bootstrap');
+  RB = require('react-bootstrap'),
+  Actions = require('./actions');
 
 var UrlInput = React.createClass({
   getInitialState: function() {
@@ -32,6 +33,9 @@ var UrlInput = React.createClass({
   },
 
   handleUrlSubmit: function(cardInfo) {
+    //persist to server
+    Actions.createCard(cardInfo);
+
     var cards = this.state.cards || [];
     var cardsCopy = cards.slice(0); //todo, shallow copy
     cardsCopy.push(cardInfo);

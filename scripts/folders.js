@@ -26,7 +26,7 @@ var Folders = React.createClass({
         <a href="/"
           onClick={this.createFolder}
           className="list-group-item">
-          <RB.Glyphicon glyph="plus" /> Create a new folder
+          <span className="icon icon-plus"></span> New Lesson
         </a>
         {allFolders}
       </div>

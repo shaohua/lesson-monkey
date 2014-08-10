@@ -94,7 +94,7 @@ vent.on('auth:logout', function(){
 vent.on('folder:create', function(){
   var foldersCopy = deepcopy(Store.get('folders'));
   foldersCopy = foldersCopy || [];
-  var newFolderName = 'Folder ' + foldersCopy.length;
+  var newFolderName = 'Lesson ' + foldersCopy.length;
   var newFolder = _.extend({}, defaultFolder, {name: newFolderName});
   foldersCopy.push(newFolder);
 

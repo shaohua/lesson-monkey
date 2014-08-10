@@ -10,6 +10,14 @@ var CardPopView = React.createClass({
     return _.sample(bgColorList);
   },
 
+  onNavPrev: function(){
+    console.log('prev');
+  },
+
+  onNavNext: function(){
+    console.log('next');
+  },
+
   render: function(){
     var card = this.props.card,
       cardId = this.props.cardId;
@@ -43,10 +51,14 @@ var CardPopView = React.createClass({
                 </a>
               </div>
             </RB.Col>
-            <div className="card-nav-prev">
+            <div
+              onClick={this.onNavPrev}
+              className="card-nav-prev">
               <span className="icon icon-left-nav"></span>
             </div>
-            <div className="card-nav-next">
+            <div
+              onClick={this.onNavNext}
+              className="card-nav-next">
               <span className="icon icon-right-nav"></span>
             </div>
           </RB.Row>

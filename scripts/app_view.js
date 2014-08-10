@@ -6,6 +6,7 @@ var _ = require('underscore'),
   Header = require('./header'),
   Link = ReactRouter.Link,
   ProfileCard = require('./profile_card'),
+  HomeView = require('./home_view'),
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -50,9 +51,26 @@ var AppView = React.createClass({
 
   render: function() {
     var user = this.state.user || '';
-    return (
+    var showHome = function(){
+      return window.location.hash === '#/';
+    };
+
+    if( showHome() ){
+      return (
+        <div>
+          <Header user={user}/>
+          <RB.Grid className='main'>
+            <RB.Row>
+              <RB.Col sm={12}>
+                <HomeView />
+              </RB.Col>
+            </RB.Row>
+          </RB.Grid>
+        </div>
+      );
+    } else return (
       <div>
-        <Header user={this.state.user}/>
+        <Header user={user}/>
         <RB.Grid className='main'>
           <RB.Row>
             <RB.Col sm={12}>

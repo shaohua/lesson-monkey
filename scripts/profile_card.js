@@ -9,6 +9,11 @@ var _ = require('underscore'),
 //http://codepen.io/codename065/pen/oGxfp
 var ProfileCard = React.createClass({
   render: function() {
+    var userName = '';
+    if(this.props.params && this.props.params.userName) {
+      userName = this.props.params.userName;
+    }
+
     var newCard = (
       <div className="profile-card">
         <div className="item-1">
@@ -16,7 +21,7 @@ var ProfileCard = React.createClass({
             <a href=""><img src="" /></a>
           </div>
           <div className="robin-key">
-            <p>Wei</p>
+            <p>{userName}</p>
             <ul>
               <li><i className="fa fa-check"></i></li>
               <li><a href=""><i className="fa fa-plus"></i></a></li>

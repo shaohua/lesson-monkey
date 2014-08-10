@@ -18,7 +18,8 @@ var UserView = React.createClass({
       <RB.Grid className='main'>
         <RB.Row>
           <RB.Col sm={2} className="ln-column-left">
-            <ProfileCard />
+            <ProfileCard
+              params={this.props.params}/>
           </RB.Col>
           <RB.Col sm={10} className="ln-column-right">
             <RB.Row>

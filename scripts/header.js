@@ -21,6 +21,13 @@ var Header = React.createClass({
     loginButton = <a href="/" onClick={this.onLogin}>Login</a>,
     logoutButton = <a href="/" onClick={this.onLogout}>Logout</a>;
 
+    var linkToProfile, linkToProfileUrl, linkToProfileUsername;
+    if(this.props.user) {
+      linkToProfileUrl = "/user/" + this.props.user.username;
+      linkToProfileUsername = this.props.user.username;
+      linkToProfile = (<Link to={linkToProfileUrl}>{linkToProfileUsername}</Link>);
+    }
+
     return (
       <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div className="container-fluid">
@@ -36,8 +43,9 @@ var Header = React.createClass({
 
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              <li><Link to="/user/wei">Wei</Link></li>
-              <li><Link to="/user/shao">Shao</Link></li>
+              <li>
+                {this.props.user ? linkToProfile : ''}
+              </li>
             </ul>
 
             <ul className="nav navbar-nav navbar-right">

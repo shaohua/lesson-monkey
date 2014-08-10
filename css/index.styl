@@ -52,6 +52,42 @@ body {
   min-width: 220px;
 }
 
+//http://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout
+//https://stackoverflow.com/questions/18516317/vertically-align-an-image-inside-a-div-with-responsive-height
+.card-pop {
+  .square {
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%; /* initial ratio of 1:1*/
+    }
+    .square-inner {
+      position: absolute;
+      top:      0;
+      left:     0;
+      bottom:   0;
+      right:    0;
+
+      overflow: hidden; //just for image
+
+      &:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;  /* vertical alignment of the inline element */
+        height: 100%;
+      }
+
+      img {
+        max-height:100%;
+        max-width:100%;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
 .green-sea {
   background-color: #17ab8e !important;
 }

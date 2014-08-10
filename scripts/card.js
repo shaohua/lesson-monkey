@@ -21,7 +21,7 @@ var Card = React.createClass({
   },
 
   onClickCard: function(){
-    console.log('onClickCard');
+    ReactRouter.transitionTo('/folder/1/card/1');
   },
 
   render: function(){

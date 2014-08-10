@@ -26,9 +26,13 @@ var CardPopView = React.createClass({
     console.log('onCardEdit');
   },
 
+  handleTitleChange: function(event){
+    var cardCopy = JSON.parse(JSON.stringify(this.props.card));
+    cardCopy.title = event.target.value;
+    Actions.updateCard(cardCopy);
+  },
+
   handleContentChange: function(event){
-    console.log('handleChange', event.target.value);
-    // this.setState({html: event.target.value});
     var cardCopy = JSON.parse(JSON.stringify(this.props.card));
     cardCopy.content = event.target.value;
     Actions.updateCard(cardCopy);
@@ -54,7 +58,11 @@ var CardPopView = React.createClass({
             </RB.Col>
             <RB.Col xs={6} className='card-col card-right-col'>
               <div>
-                <h2>{card.title}</h2>
+                <h2>
+                  <ContentEditable
+                    html={card.title}
+                    onChange={this.handleTitleChange} />
+                </h2>
               </div>
               <div>
                 <ContentEditable

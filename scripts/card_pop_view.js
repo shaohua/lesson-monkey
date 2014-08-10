@@ -11,11 +11,13 @@ var CardPopView = React.createClass({
   },
 
   onNavPrev: function(){
-    console.log('prev');
+    ReactRouter.transitionTo('/folder/' + this.props.folderName
+       + '/card/' + this.props.prevCardId);
   },
 
   onNavNext: function(){
-    console.log('next');
+    ReactRouter.transitionTo('/folder/' + this.props.folderName
+       + '/card/' + this.props.nextCardId);
   },
 
   render: function(){

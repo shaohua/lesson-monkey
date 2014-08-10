@@ -19,9 +19,9 @@ var UrlInput = React.createClass({
       .done(function( data ) {
         this.handleUrlSubmit({
           title: data.title,
-          text: data.description,
-          provider_url: data.provider_url,
-          thumbnail_url: data.thumbnail_url
+          content: data.description,
+          htmlUrl: data.provider_url,
+          imgUrl: data.thumbnail_url
         });
       }.bind(this));
 

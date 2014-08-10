@@ -105,14 +105,22 @@ vent.on('folder:create', function(){
  * For cards
  */
 vent.on('card:create', function(payload){
+  var currentFolderIndex = Store.get('currentFolderIndex') || 0;
+
   console.log('card:create', payload);
+  //deal with undefined from embedly
   for(var key in payload) {
     if(payload.hasOwnProperty(key)){
       payload[key] = payload[key] || '';
     }
   }
+
   var cardsCopy = deepcopy(Store.get('cards'));
   cardsCopy = cardsCopy || [];
+
+  payload.folderIndex = currentFolderIndex;
+  payload.id = cardsCopy.length;  //todo, not a good idea
+
   cardsCopy.push(payload);
 
   Store.set('cards', cardsCopy);

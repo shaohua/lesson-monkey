@@ -58,11 +58,11 @@ var CardPopView = React.createClass({
             </RB.Col>
             <RB.Col xs={6} className='card-col card-right-col'>
               <div>
-                <h2>
+                <h1>
                   <ContentEditable
                     html={card.title}
                     onChange={this.handleTitleChange} />
-                </h2>
+                </h1>
               </div>
               <div>
                 <ContentEditable

@@ -101,11 +101,15 @@ vent.on('folder:create', function(){
   Store.set('folders', foldersCopy);
 });
 
+vent.on('folderIndex:update', function(newIndex){
+  Store && Store.set('folderIndex', newIndex);
+});
+
 /**
  * For cards
  */
 vent.on('card:create', function(payload){
-  var currentFolderIndex = Store.get('currentFolderIndex') || 0;
+  var currentFolderIndex = Store.get('folderIndex') || 0;
 
   console.log('card:create', payload);
   //deal with undefined from embedly

@@ -5,6 +5,7 @@ var _ = require('underscore'),
   RB = require('react-bootstrap'),
   Header = require('./header'),
   Link = ReactRouter.Link,
+  ProfileCard = require('./profile_card'),
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -52,13 +53,7 @@ var AppView = React.createClass({
       <RB.Grid className='main'>
         <RB.Row>
           <RB.Col sm={2} className="ln-column-left">
-            <ul className="list-group">
-              <li className="list-group-item">Cras justo odio</li>
-              <li className="list-group-item">Dapibus ac facilisis in</li>
-              <li className="list-group-item">Morbi leo risus</li>
-              <li className="list-group-item">Porta ac consectetur ac</li>
-              <li className="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <ProfileCard />
           </RB.Col>
           <RB.Col sm={10} className="ln-column-right">
             <this.props.activeRouteHandler data={this.state}/>

@@ -14,6 +14,10 @@ var FolderView = React.createClass({
     return {};
   },
 
+  componentDidMount: function(){
+    Actions.updateFolderIndex(this.props.params.folderName);
+  },
+
   render: function() {
     var cards = this.props.data && this.props.data.cards;
     // var fakeCard = {
@@ -23,17 +27,19 @@ var FolderView = React.createClass({
     //   imgUrl: 'http://static1.businessinsider.com/image/4fed86f0eab8ea8e6e000014-1200/the-pythagorean-theorem.jpg',
     //   htmlUrl: ''
     // };
-    cards = _.map(cards, function(card){
+    var cardsInCurrentFolder = _.filter(cards, function(card){
+      return card.folderIndex + '' === this.props.params.folderName + ''
+    }, this);
+    var cardsRendered = _.map(cardsInCurrentFolder, function(card){
       return (<Card cardId={card.id} card={card} />);
     });
-
 
 
     return (
       <RB.Row>
         <RB.Col sm={12}>
           <UrlInput />
-          {cards}
+          {cardsRendered}
         </RB.Col>
       </RB.Row>
     );

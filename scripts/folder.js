@@ -45,11 +45,6 @@ var Folder = React.createClass({
     }.bind(this));
   },
 
-  navigate: function(event){
-    Actions.updateFolderIndex(this.props.domIndex);
-    event.preventDefault();
-  },
-
   render: function(){
     var cx = React.addons.classSet;
     var classes = cx({
@@ -63,7 +58,6 @@ var Folder = React.createClass({
 
     return (
       <Link to={folderUrl}
-        onClick={this.navigate}
         onDragEnter={this.preventDefault}
         onDragOver={this.preventDefault}
         onDrop={this.onDrop}

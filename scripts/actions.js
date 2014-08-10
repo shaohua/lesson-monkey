@@ -21,6 +21,10 @@ var Actions = {
     vent.trigger('folder:update', payload);
   },
 
+  updateFolderIndex: function(payload){
+    vent.trigger('folderIndex:update', payload);
+  },
+
   createCard: function(payload){
     vent.trigger('card:create', payload);
   },

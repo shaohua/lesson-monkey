@@ -90,15 +90,38 @@ var HomeView = React.createClass({
        htmlUrl: 'www.yahoo.com'
      };
 
-    var fakeHomeTopic5 = {
+      var fakeHomeTopic5 = {
        id: '1',
-       title: '魅力无限',
-       content: '提升魅力',
-       imgUrl: 'media/img_temp/meili_640x480.png',
+       title: 'Our Galaxy',
+       content: 'A galaxy is a massive, gravitationally bound system consisting of stars, stellar remnants, an interstellar medium of gas and dust, and dark matter.',
+       imgUrl: 'media/img_temp/galaxy_640x480.jpg',
        htmlUrl: 'www.yahoo.com'
      };
 
-     
+    var fakeHomeTopic6 = {
+       id: '1',
+       title: 'Bootflat Tutorial',
+       content: 'Bootflat is a free flat UI kit which is includes all the components that a complete website should contain. Working with it is easy and straightforward. You just need to download the UI kit, extract the Bootflat files and at the bottom, of your tag just paste one line of code. ',
+       imgUrl: 'media/img_temp/bootflat_640x480.jpg',
+       htmlUrl: 'www.yahoo.com'
+     };
+
+     var fakeHomeTopic7 = {
+       id: '1',
+       title: '魅力的魅力',
+       content: '工作、生活、恋爱，魅力36计帮你搞定一切',
+       imgUrl: 'media/img_temp/meili_640x480.png',
+       htmlUrl: 'www.yahoo.com'
+     };
+  
+   var fakeHomeTopic8 = {
+       id: '1',
+       title: 'Guitar 1,2,3',
+       content: 'This post is for anyone who has thought about picking up the guitar but hasn’t yet. For those of you who aren’t musicians, becoming one is both more fun and easier than you imagine. ',
+       imgUrl: 'media/img_temp/guitar_640x480.jpg',
+       htmlUrl: 'www.yahoo.com'
+     };
+ 
      var fakeHomeTopic99 = {
        id: '2',
        title: 'How to set up a WordPress blog',
@@ -107,9 +130,7 @@ var HomeView = React.createClass({
        htmlUrl: 'www.yahoo.com'
      };
 
- //    var fakeHomeTopics = [fakeHomeTopic1, fakeHomeTopic2, fakeHomeTopic3, fakeHomeTopic4,fakeHomeTopic5, fakeHomeTopic6, fakeHomeTopic7, fakeHomeTopic8];
-     var fakeHomeTopics = [fakeHomeTopic1, fakeHomeTopic2, fakeHomeTopic3, fakeHomeTopic4, fakeHomeTopic5];
- //   var fakeHomeTopics = [fakeHomeTopic];
+     var fakeHomeTopics = [fakeHomeTopic1, fakeHomeTopic2, fakeHomeTopic3, fakeHomeTopic4,fakeHomeTopic5, fakeHomeTopic6, fakeHomeTopic7, fakeHomeTopic8];
   
     var homeTopics = _.map(fakeHomeTopics, function(homeTopic){
       return (<HomeTopic topicId={homeTopic.id} homeTopic={homeTopic} />);

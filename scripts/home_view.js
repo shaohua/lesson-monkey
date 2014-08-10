@@ -6,6 +6,7 @@ var _ = require('underscore'),
   Header = require('./header'),
   Link = ReactRouter.Link,
   HomeTopic = require('./home_topic'),
+  MailingList = require('./mailing_list'),
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -18,6 +19,10 @@ var HomeView = React.createClass({
     this.setState({
       inputValue: event.target.value
     });
+  },
+
+  onSearch: function(event){
+    event.preventDefault();
   },
 
   render: function() {
@@ -99,10 +104,13 @@ var HomeView = React.createClass({
       fakeHomeTopic3, fakeHomeTopic4, fakeHomeTopic5,
       fakeHomeTopic6, fakeHomeTopic7, fakeHomeTopic8];
 
-    var homeTopics = _.map(fakeHomeTopics, function(homeTopic){
+    var homeTopics = _.map(fakeHomeTopics.slice(0,4), function(homeTopic){
       return (<HomeTopic topicId={homeTopic.id} homeTopic={homeTopic} />);
     });
 
+    var newLessons = _.map(fakeHomeTopics.slice(4,9), function(homeTopic){
+      return (<HomeTopic topicId={homeTopic.id} homeTopic={homeTopic} />);
+    });
 
 
     var mainDiv = (
@@ -117,7 +125,10 @@ var HomeView = React.createClass({
                   placeholder="find bite-size lessons: vertically center a div, Guitar 101"
                   value={this.state.inputValue}
                   onChange={this.onInputChange} />
-                <RB.Button type="submit" className="home-search-button">
+                <RB.Button
+                  onClick={this.onSearch}
+                  type="submit"
+                  className="home-search-button">
                   <span className="icon icon-search"></span> Search
                 </RB.Button>
               </form>
@@ -126,7 +137,7 @@ var HomeView = React.createClass({
          </RB.Row>
         <RB.Row>
           <RB.Col sm={12}>
-            <h2 className="home-hot-topic-title">Hot Topics: </h2>
+            <h2 className="home-hot-topic-title">Popular lessons: </h2>
           </RB.Col>
         </RB.Row>
         <RB.Row>
@@ -134,14 +145,57 @@ var HomeView = React.createClass({
             {homeTopics}
           </RB.Col>
         </RB.Row>
+
         <RB.Row>
           <RB.Col sm={12}>
-            <h2 className="home-hot-topic-title">Contact us: </h2>
+            <h2 className="home-hot-topic-title">New lessons: </h2>
           </RB.Col>
         </RB.Row>
         <RB.Row>
           <RB.Col sm={12}>
-            <div>Contact us at shaohua at howtox.com</div>
+            {newLessons}
+          </RB.Col>
+        </RB.Row>
+
+        <RB.Row>
+          <RB.Col sm={6}>
+            <RB.Row>
+              <RB.Col sm={12}>
+                <h2 className="home-hot-topic-title">Notify me at launch: </h2>
+              </RB.Col>
+            </RB.Row>
+            <RB.Row>
+              <RB.Col sm={12}>
+                <MailingList />
+              </RB.Col>
+            </RB.Row>
+          </RB.Col>
+          <RB.Col sm={6}>
+            <RB.Row>
+              <RB.Col sm={12}>
+                <h2 className="home-hot-topic-title">Request a lesson: </h2>
+              </RB.Col>
+            </RB.Row>
+            <RB.Row>
+              <RB.Col sm={12}>
+                <h4>Where you can submit your requests.</h4>
+                <ul>
+                  <li>
+                    How to center align a div
+                  </li>
+                  <li>
+                    How to get started with AngularJS
+                  </li>
+                </ul>
+              </RB.Col>
+            </RB.Row>
+          </RB.Col>
+        </RB.Row>
+
+        <RB.Row>
+          <RB.Col sm={12}>
+            <h2 className="home-hot-topic-title">&nbsp;</h2>
+            <h2 className="home-hot-topic-title">&nbsp;</h2>
           </RB.Col>
         </RB.Row>
       </div>

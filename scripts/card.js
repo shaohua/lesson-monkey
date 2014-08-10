@@ -2,7 +2,8 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
-  RB = require('react-bootstrap');
+  RB = require('react-bootstrap'),
+  MyModalDialog = require('./modal');
 
 var Card = React.createClass({
   onDragStart: function(event){
@@ -25,6 +26,17 @@ var Card = React.createClass({
   },
 
   render: function(){
+    var modalTest;
+    try {
+      modalTest = (
+        <RB.ModalTrigger modal={<MyModalDialog />}>
+          <RB.Button>Open Modal</RB.Button>
+        </RB.ModalTrigger>
+      );
+    } catch (e){
+      console.log('Exception in modal', e);
+    }
+
     var card = this.props.card,
       cardId = this.props.cardId;
 
@@ -50,6 +62,7 @@ var Card = React.createClass({
                   <h5>{card.title.substring(0,10) + '..'}</h5>
                 </div>
                 <div>
+                  {modalTest}
                   {card.content.substring(0,60) + '..'}
                 </div>
                 <div className='card-right-bottom-col'>

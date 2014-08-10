@@ -16,7 +16,12 @@ var UrlInput = React.createClass({
 
     $.getJSON(embedAPIss)
       .done(function( data ) {
-        this.props.onUrlSubmit({title: data.title, text: data.description, provider_url: data.provider_url, thumbnail_url: data.thumbnail_url});
+        this.handleUrlSubmit({
+          title: data.title,
+          text: data.description,
+          provider_url: data.provider_url,
+          thumbnail_url: data.thumbnail_url
+        });
       }.bind(this));
 
 
@@ -24,6 +29,17 @@ var UrlInput = React.createClass({
       inputValue: ''
     });
     return false;
+  },
+
+  handleUrlSubmit: function(cardInfo) {
+    var cards = this.state.cards || [];
+    var cardsCopy = cards.slice(0); //todo, shallow copy
+    cardsCopy.push(cardInfo);
+    this.setState({
+      cards: cardsCopy
+    }, function(){
+      // console.log('this.state', this.state);
+    }.bind(this));
   },
 
   onInputChange: function(event){

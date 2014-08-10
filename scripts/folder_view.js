@@ -5,6 +5,7 @@ var _ = require('underscore'),
   RB = require('react-bootstrap'),
   Folders = require('./folders'),
   Card = require('./card'),
+  UrlInput = require('./url_input'),
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -15,6 +16,20 @@ var FolderView = React.createClass({
 
   onClickNewCard: function(){
     console.log('onClickNewCard');
+  },
+  handleSubmit: function() {
+    var text = this.refs.target_url.getDOMNode().value.trim();
+    var encodedUrl = encodeURIComponent(text);
+    var embedAPIss = "https://api.embed.ly/1/oembed?key=63048684984941079d74082f802d80cb&url=" + encodedUrl;
+
+    $.getJSON(embedAPIss)
+    .done(function( data ) {
+      this.props.onUrlSubmit({title: data.title, text: data.description, provider_url: data.provider_url, thumbnail_url: data.thumbnail_url});
+    }.bind(this));
+
+
+    this.refs.target_url.getDOMNode().value = '';
+    return false;
   },
 
   render: function() {
@@ -53,7 +68,7 @@ var FolderView = React.createClass({
     return (
       <RB.Row>
         <RB.Col sm={12}>
-          {newCard}
+          <UrlInput />
           {cards}
         </RB.Col>
       </RB.Row>

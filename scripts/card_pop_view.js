@@ -2,6 +2,8 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  ContentEditable = require('./content_editable'),
+  Actions = require('./actions'),
   RB = require('react-bootstrap');
 
 var CardPopView = React.createClass({
@@ -18,6 +20,18 @@ var CardPopView = React.createClass({
   onNavNext: function(){
     ReactRouter.transitionTo('/folder/' + this.props.folderName
        + '/card/' + this.props.nextCardId);
+  },
+
+  onCardEdit: function(){
+    console.log('onCardEdit');
+  },
+
+  handleContentChange: function(event){
+    console.log('handleChange', event.target.value);
+    // this.setState({html: event.target.value});
+    var cardCopy = JSON.parse(JSON.stringify(this.props.card));
+    cardCopy.content = event.target.value;
+    Actions.updateCard(cardCopy);
   },
 
   render: function(){
@@ -43,10 +57,14 @@ var CardPopView = React.createClass({
                 <h2>{card.title}</h2>
               </div>
               <div>
-                {card.content}
+                <ContentEditable
+                  html={card.content}
+                  onChange={this.handleContentChange} />
               </div>
               <div className='card-right-bottom-col'>
-                <span className="icon icon-edit"></span>
+                <span
+                  onClick={this.onCardEdit}
+                  className="icon icon-edit"></span>
                 <span>&nbsp;</span>
                 <a href={card.htmlUrl} target='_blank'>
                   Read Original Article

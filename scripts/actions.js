@@ -29,6 +29,10 @@ var Actions = {
     vent.trigger('card:create', payload);
   },
 
+  updateCard: function(payload){
+    vent.trigger('card:update', payload);
+  },
+
   offFirebase: function(){
     vent.trigger('firebase:off');
   }

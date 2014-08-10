@@ -52,7 +52,6 @@ var AppView = React.createClass({
       <RB.Grid className='main'>
         <RB.Row>
           <RB.Col sm={2} className="ln-column-left">
-            column-left
             <ul className="list-group">
               <li className="list-group-item">Cras justo odio</li>
               <li className="list-group-item">Dapibus ac facilisis in</li>
@@ -62,7 +61,6 @@ var AppView = React.createClass({
             </ul>
           </RB.Col>
           <RB.Col sm={10} className="ln-column-right">
-            column-right
             <this.props.activeRouteHandler data={this.state}/>
           </RB.Col>
         </RB.Row>

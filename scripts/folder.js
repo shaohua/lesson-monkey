@@ -57,7 +57,9 @@ var Folder = React.createClass({
       'list-group-item-success': this.state.isDropSuccess,
       'active': (this.props.activeFolderIndex === this.props.domIndex)
     });
-    var folderUrl = '/user/shao/folder/1';
+
+    var folderUrl = '/user/' + this.props.userName
+                  + '/folder/' + this.props.domIndex ;
 
     return (
       <Link to={folderUrl}

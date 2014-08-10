@@ -17,6 +17,7 @@ var UserView = React.createClass({
       <RB.Row>
         <RB.Col sm={3}>
           <Folders
+            params={this.props.params}
             data={this.props.data}/>
         </RB.Col>
         <RB.Col sm={9}>

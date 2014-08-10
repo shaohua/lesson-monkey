@@ -19,11 +19,10 @@ var FolderView = React.createClass({
     // var fakeCard = {
     //   id: '1',
     //   title: 'How to set up a WordPress blog',
-    //   content: 'WordPress is well-known for its ease of installation. Under most circumstances, installing WordPress is a very simple process and takes less than five minutes to complete. ',
+    //   content: 'WordPress is well-known. ',
     //   imgUrl: 'http://static1.businessinsider.com/image/4fed86f0eab8ea8e6e000014-1200/the-pythagorean-theorem.jpg',
     //   htmlUrl: ''
     // };
-    // var fakeCards = [fakeCard, fakeCard, fakeCard, fakeCard];
     cards = _.map(cards, function(card){
       return (<Card cardId={card.id} card={card} />);
     });

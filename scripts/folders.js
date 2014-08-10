@@ -18,7 +18,8 @@ var Folders = React.createClass({
       return <Folder
         domIndex={index}
         activeFolderIndex={this.props.folderIndex}
-        folderName={folder.name}/>;
+        folderName={folder.name}
+        userName={this.props.params.userName}/>;
     }, this);
     return (
       <div className="list-group">

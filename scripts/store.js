@@ -63,7 +63,7 @@ vent.on('auth', function(){
         id: user.id,
         uid: user.uid,
         provider: user.provider,
-        username: user.username
+        username: user.email
       };
 
       Store.set({
@@ -75,8 +75,10 @@ vent.on('auth', function(){
 });
 
 vent.on('auth:login', function(){
-  firebaseAuth.login('github', {
-    rememberMe: true
+  firebaseAuth.login('google', {
+    rememberMe: true,
+    scope: 'https://www.googleapis.com/auth/plus.login,
+            https://www.googleapis.com/auth/drive'
   });
 });
 

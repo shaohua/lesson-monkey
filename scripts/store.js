@@ -77,8 +77,8 @@ vent.on('auth', function(){
 vent.on('auth:login', function(){
   firebaseAuth.login('google', {
     rememberMe: true,
-    scope: 'https://www.googleapis.com/auth/plus.login,
-            https://www.googleapis.com/auth/drive'
+    scope: 'https://www.googleapis.com/auth/plus.login,' +
+           'https://www.googleapis.com/auth/drive'
   });
 });
 

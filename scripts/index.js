@@ -10,19 +10,18 @@ var _ = require('underscore'),
   HomeView = require('./home_view'),
   Routes = ReactRouter.Routes,
   Route = ReactRouter.Route,
+  DefaultRoute = ReactRouter.DefaultRoute,
   Link = ReactRouter.Link;
 
 $(document).ready(function(){
   React.renderComponent((
-    <Routes>
-      <Route handler={AppView}>
+    <Routes location="history">
+      <Route path="/" handler={AppView}>
+        <DefaultRoute handler={HomeView} />
         <Route name="user" path="/user/:userName" handler={UserView}>
           <Route name="folder" path="/user/:userName/folder/:folderName" handler={FolderView}/>
         </Route>
-        <Route name="folderPop" path="/folder/:folderName/card/:cardId" handler={FolderPopView}>
-        </Route>
-        <Route name="home" path="/home" handler={HomeView}>
-        </Route>
+        <Route name="folderPop" path="/folder/:folderName/card/:cardId" handler={FolderPopView}/>
       </Route>
     </Routes>
   ), $('#main-app')[0]);

@@ -51,24 +51,8 @@ var AppView = React.createClass({
 
   render: function() {
     var user = this.state.user || '';
-    var showHome = function(){
-      return window.location.hash === '#/';
-    };
 
-    if( showHome() ){
-      return (
-        <div>
-          <Header user={user}/>
-          <RB.Grid className='main'>
-            <RB.Row>
-              <RB.Col sm={12}>
-                <HomeView />
-              </RB.Col>
-            </RB.Row>
-          </RB.Grid>
-        </div>
-      );
-    } else return (
+    return (
       <div>
         <Header user={user}/>
         <RB.Grid className='main'>

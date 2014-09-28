@@ -38,7 +38,7 @@ var Header = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to="/home">{logoText}</Link>
+            <Link className="navbar-brand" to="/">{logoText}</Link>
           </div>
 
           <div className="navbar-collapse collapse">

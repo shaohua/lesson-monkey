@@ -153,7 +153,7 @@ var HomeView = React.createClass({
         </RB.Row>
         <RB.Row>
           <RB.Col sm={12}>
-            {newLessons}
+            newLessons
           </RB.Col>
         </RB.Row>
 

@@ -18,8 +18,8 @@ $(document).ready(function(){
     <Routes location="history">
       <Route path="/" handler={AppView}>
         <DefaultRoute handler={HomeView} />
-        <Route name="user" path="/user/:userName" handler={UserView}>
-          <Route name="folder" path="/user/:userName/folder/:folderName" handler={FolderView}/>
+        <Route name="user" path="/user/:userId" handler={UserView}>
+          <Route name="folder" path="/user/:userId/folder/:folderName" handler={FolderView}/>
         </Route>
         <Route name="folderPop" path="/folder/:folderName/card/:cardId" handler={FolderPopView}/>
       </Route>

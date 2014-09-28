@@ -21,11 +21,13 @@ var Header = React.createClass({
     loginButton = <a href="/" onClick={this.onLogin}>Login</a>,
     logoutButton = <a href="/" onClick={this.onLogout}>Logout</a>;
 
-    var linkToProfile, linkToProfileUsername;
+
+    var linkToProfile, userId;
     if(this.props.user) {
-      linkToProfileUsername = this.props.user.username;
-      linkToProfile = (<Link to='user' params={{userName: linkToProfileUsername}}>
-                        {linkToProfileUsername}
+      userId = this.props.user.id;
+    console.log('user', this.props.user, userId);
+      linkToProfile = (<Link to='user' params={{userId: userId }}>
+                        {userId}
                        </Link>);
     }
 

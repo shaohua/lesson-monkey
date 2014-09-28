@@ -37,10 +37,9 @@ var _initStore = function(userId){
 
   Store = new FirebaseModel();
 
-  //fill defaults after loading
   Store.firebase.on('value', function(storeSnap){
-    console.log('storeSnap', storeSnap.val());
-
+  //todo
+  //fill defaults after loading
   });
 
   dfd.resolve(Store);

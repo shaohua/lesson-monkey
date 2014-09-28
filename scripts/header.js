@@ -17,15 +17,16 @@ var Header = React.createClass({
   },
 
   render: function(){
-    var logoText = "Learnot",
+    var logoText = "LessonMonkey",
     loginButton = <a href="/" onClick={this.onLogin}>Login</a>,
     logoutButton = <a href="/" onClick={this.onLogout}>Logout</a>;
 
-    var linkToProfile, linkToProfileUrl, linkToProfileUsername;
+    var linkToProfile, linkToProfileUsername;
     if(this.props.user) {
-      linkToProfileUrl = "/user/" + this.props.user.username;
       linkToProfileUsername = this.props.user.username;
-      linkToProfile = (<Link to={linkToProfileUrl}>{linkToProfileUsername}</Link>);
+      linkToProfile = (<Link to='user' params={{userName: linkToProfileUsername}}>
+                        {linkToProfileUsername}
+                       </Link>);
     }
 
     return (

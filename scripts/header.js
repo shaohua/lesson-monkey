@@ -25,7 +25,6 @@ var Header = React.createClass({
     var linkToProfile, userId;
     if(this.props.user) {
       userId = this.props.user.id;
-    console.log('user', this.props.user, userId);
       linkToProfile = (<Link to='user' params={{userId: userId }}>
                         {userId}
                        </Link>);

@@ -1,14 +1,19 @@
 /** @jsx React.DOM */
+/* global ReactRouter */
+
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   RB = require('react-bootstrap');
 
 var HomeTopic = React.createClass({
- 
- 
+
+
   onClickhomeTopic: function(){
     console.log('onClickhomeTopic');
+    //todo
+    //remove hardcoding
+    ReactRouter.transitionTo('folderPop', {folderName: 0, cardId: 0});
   },
 
   render: function(){

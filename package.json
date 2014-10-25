@@ -3,6 +3,7 @@
     "browserify": "^4.2.3",
     "browserify-shim": "^3.6.0",
     "chai": "^1.9.1",
+    "connect-modrewrite": "^0.7.9",
     "envify": "^1.2.1",
     "firebase": "^1.0.17",
     "grunt-browserify": "^2.1.4",

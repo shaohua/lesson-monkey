@@ -1,3 +1,5 @@
+var rewrite = require( "connect-modrewrite" );
+
 module.exports = function(grunt) {
   // load all grunt tasks matching the `grunt-*` pattern
   require('load-grunt-tasks')(grunt);
@@ -9,6 +11,16 @@ module.exports = function(grunt) {
       name: 'learnot'
     },
     connect: {
+      options: { //http://stackoverflow.com/a/26308563/1239621
+        middleware: function ( connect, options, middlewares ) {
+          var rules = [
+              "!\\.html|\\.js|\\.css|\\.svg|\\.jp(e?)g|" +
+                "\\.png|\\.gif|\\.eot|\\.ttf|\\.woff$ /index.html"
+          ];
+          middlewares.unshift( rewrite( rules ) );
+          return middlewares;
+        }
+      },
       server: {
         options: {
           keepalive: false,

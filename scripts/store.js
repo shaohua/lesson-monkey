@@ -54,22 +54,28 @@ vent.on('auth', function(){
   //the user's authentication state changed
   firebaseAuth = new FirebaseSimpleLogin(firebaseRef, function(error, user) {
     if (error) return;
+    var userObj;
     if(user && user.id) {
-      //bind the store to a dynamic URL
-      _initStore(user.id);
-
-      var userObj = {
+      userObj = {
         id: user.id,
         uid: user.uid,
         provider: user.provider,
         username: user.email
       };
-
-      Store.set({
-        user: userObj
-      });
-
+    } else {
+      //todo
+      //dom only
+      var matchedUserId = window.location.pathname.match('\/user\/([^\/]+)');
+      userObj = {
+        id: matchedUserId && matchedUserId[1]
+      }
     }
+
+    //bind the store to a dynamic URL
+    _initStore(userObj.id);
+    Store.set({
+      user: userObj
+    });
   }.bind(this));
 });
 

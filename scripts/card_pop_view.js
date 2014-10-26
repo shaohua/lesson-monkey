@@ -2,11 +2,14 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  Navigation = ReactRouter.Navigation,
   ContentEditable = require('./content_editable'),
   Actions = require('./actions'),
   RB = require('react-bootstrap');
 
 var CardPopView = React.createClass({
+  mixins: [Navigation],
+
   getRandomBgColor: function(){
     var bgColorList = ['green-sea', 'nephritis', 'belize-hole', 'wisteria', 'midnight-blue'];
     return _.sample(bgColorList);
@@ -16,14 +19,14 @@ var CardPopView = React.createClass({
     var prevRoute = '/user/' + this.props.userId +
       '/folder/' + this.props.card.folderIndex +
       '/card/' + this.props.prevCardId;
-    ReactRouter.transitionTo(prevRoute);
+    this.transitionTo(prevRoute);
   },
 
   onNavNext: function(){
     var nextRoute = '/user/' + this.props.userId +
       '/folder/' + this.props.card.folderIndex +
       '/card/' + this.props.nextCardId;
-    ReactRouter.transitionTo(nextRoute);
+    this.transitionTo(nextRoute);
   },
 
   onCardEdit: function(){

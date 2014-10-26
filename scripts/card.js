@@ -2,9 +2,12 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  Navigation = ReactRouter.Navigation,
   RB = require('react-bootstrap');
 
 var Card = React.createClass({
+  mixins: [Navigation],
+
   onDragStart: function(event){
     var dragData = this.props.cardId;
     event.dataTransfer.setData('text', dragData);
@@ -26,7 +29,7 @@ var Card = React.createClass({
     var nextRoute = '/user/' + this.props.params.userId +
       '/folder/' + this.props.card.folderIndex +
       '/card/' + this.props.card.id;
-    ReactRouter.transitionTo(nextRoute);
+    this.transitionTo(nextRoute);
   },
 
   render: function(){

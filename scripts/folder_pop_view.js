@@ -19,6 +19,7 @@ var FolderPopView = React.createClass({
     if (typeof cards === 'undefined') return (<div/>);
 
     var  folderName = this.props.params.folderName,
+      userId = this.props.params.userId,
       cardId = this.props.params.cardId,
       prevCardId = parseInt(cardId, 10) - 1,
       nextCardId = parseInt(cardId, 10) + 1,
@@ -32,6 +33,7 @@ var FolderPopView = React.createClass({
             prevCardId={prevCardId}
             nextCardId={nextCardId}
             folderName={folderName}
+            userId={userId}
             card={card} />
         </RB.Col>
       </RB.Row>

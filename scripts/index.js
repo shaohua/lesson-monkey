@@ -21,8 +21,7 @@ $(document).ready(function(){
         <Route name="user" path="/user/:userId" handler={UserView}>
           <Route name="folder" path="/user/:userId/folder/:folderName" handler={FolderView}/>
         </Route>
-        <Route name="folderPopNested" path="/user/:userId/folder/:folderName/card/:cardId" handler={FolderPopView}/>
-        <Route name="folderPop" path="/folder/:folderName/card/:cardId" handler={FolderPopView}/>
+        <Route name="folderPop" path="/user/:userId/folder/:folderName/card/:cardId" handler={FolderPopView}/>
       </Route>
     </Routes>
   ), $('#main-app')[0]);

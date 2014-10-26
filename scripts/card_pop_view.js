@@ -13,13 +13,17 @@ var CardPopView = React.createClass({
   },
 
   onNavPrev: function(){
-    ReactRouter.transitionTo('/folder/' + this.props.folderName
-       + '/card/' + this.props.prevCardId);
+    var prevRoute = '/user/' + this.props.userId +
+      '/folder/' + this.props.card.folderIndex +
+      '/card/' + this.props.prevCardId;
+    ReactRouter.transitionTo(prevRoute);
   },
 
   onNavNext: function(){
-    ReactRouter.transitionTo('/folder/' + this.props.folderName
-       + '/card/' + this.props.nextCardId);
+    var nextRoute = '/user/' + this.props.userId +
+      '/folder/' + this.props.card.folderIndex +
+      '/card/' + this.props.nextCardId;
+    ReactRouter.transitionTo(nextRoute);
   },
 
   onCardEdit: function(){

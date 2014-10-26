@@ -5,6 +5,7 @@ var _ = require('underscore'),
   RB = require('react-bootstrap'),
   Header = require('./header'),
   Link = ReactRouter.Link,
+  CurrentPath = ReactRouter.CurrentPath,
   ProfileCard = require('./profile_card'),
   HomeView = require('./home_view'),
   Store = require('./store'),
@@ -21,6 +22,8 @@ var _getStateFromStore = function(myStore){
 };
 
 var AppView = React.createClass({
+  mixins: [ CurrentPath ],
+
   getInitialState: function(){
     return {};
   },
@@ -33,6 +36,29 @@ var AppView = React.createClass({
 
   componentWillMount: function(){
     Actions.auth();
+
+    var currentPath = this.getCurrentPath();
+
+    var matchedUserIdRe = currentPath.match('\/user\/([^\/]+)');
+    var currentPathUserId = matchedUserIdRe && matchedUserIdRe[1];
+
+    var isEditable = (currentPathUserId ===
+      this.props.data && this.props.data.user && this.props.data.user.id);
+
+    this.setState({
+      isEditable: isEditable
+    });
+
+    if(!isEditable) {
+      var FirebaseModel = Backbone.Firebase.Model.extend({
+        firebase: "https://learnot.firebaseIO.com/people/" + currentPathUserId
+      });
+
+      var readonlyStore = new FirebaseModel();
+      readonlyStore.firebase.on('value', function(storeSnap){
+        this.setState( storeSnap.val() );
+      }.bind(this));
+    }
   },
 
   componentDidMount: function(){
@@ -51,7 +77,6 @@ var AppView = React.createClass({
 
   render: function() {
     var user = this.state.user || '';
-
     return (
       <div>
         <Header user={user}/>

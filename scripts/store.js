@@ -62,20 +62,15 @@ vent.on('auth', function(){
         provider: user.provider,
         username: user.email
       };
-    } else {
-      //todo
-      //dom only
-      var matchedUserId = window.location.pathname.match('\/user\/([^\/]+)');
-      userObj = {
-        id: matchedUserId && matchedUserId[1]
-      }
+
+      //bind the store to a dynamic URL
+      _initStore(userObj.id);
+
+      Store.set({
+        user: userObj
+      });
     }
 
-    //bind the store to a dynamic URL
-    _initStore(userObj.id);
-    Store.set({
-      user: userObj
-    });
   }.bind(this));
 });
 

@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var _ = require('underscore'),
   $ = require('jquery'),
+  Backbone = require('backbone'),
   React = require('react'),
   RB = require('react-bootstrap'),
   Folders = require('./folders'),
@@ -29,6 +30,7 @@ var FolderPopView = React.createClass({
       <RB.Row>
         <RB.Col sm={12} className='card-pop'>
           <Card
+            isEditable={this.props.data.isEditable}
             cardId={card.id}
             prevCardId={prevCardId}
             nextCardId={nextCardId}

@@ -64,12 +64,14 @@ var CardPopView = React.createClass({
               <div>
                 <h1>
                   <ContentEditable
+                    isEditable={this.props.isEditable}
                     html={card.title}
                     onChange={this.handleTitleChange} />
                 </h1>
               </div>
               <div>
                 <ContentEditable
+                  isEditable={this.props.isEditable}
                   html={card.content}
                   onChange={this.handleContentChange} />
               </div>

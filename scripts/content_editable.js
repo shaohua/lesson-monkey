@@ -6,11 +6,20 @@ var _ = require('underscore'),
 
 var ContentEditable = React.createClass({
   render: function(){
-    return <div
-      onInput={this.emitChange}
-      onBlur={this.emitChange}
-      contentEditable
-      dangerouslySetInnerHTML={{__html: this.props.html}}></div>;
+    if(this.props.isEditable){
+      return (
+        <div
+          onInput={this.emitChange}
+          onBlur={this.emitChange}
+          contentEditable
+          dangerouslySetInnerHTML={{__html: this.props.html}}>
+        </div>
+      );
+    }else{
+      return (
+        <div dangerouslySetInnerHTML={{__html: this.props.html}} />
+      );
+    }
   },
 
   shouldComponentUpdate: function(nextProps){

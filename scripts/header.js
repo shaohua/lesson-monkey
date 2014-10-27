@@ -52,7 +52,7 @@ var Header = React.createClass({
 
             <ul className="nav navbar-nav navbar-right">
               <li>
-                {this.props.user ? logoutButton : loginButton}
+                {this.props.loggedIn ? logoutButton : loginButton}
               </li>
             </ul>
           </div>

@@ -5,6 +5,12 @@ var _ = require('underscore'),
   RB = require('react-bootstrap');
 
 var ContentEditable = React.createClass({
+  componentWillReceiveProps: function(nextProps){
+    //todo
+    //why is this necessary
+    this.forceUpdate();
+  },
+
   render: function(){
     if(this.props.isEditable){
       return (

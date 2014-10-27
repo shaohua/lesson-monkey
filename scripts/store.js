@@ -67,7 +67,12 @@ vent.on('auth', function(){
       _initStore(userObj.id);
 
       Store.set({
-        user: userObj
+        user: userObj,
+        loggedIn: true
+      });
+    }else{
+      Store && Store.set({
+        loggedIn: false
       });
     }
 

@@ -15,9 +15,10 @@ var _getStateFromStore = function(myStore){
   //myStore is NO longer a Backbone model
   // console.log('myStore', myStore);
   return {
-    user: myStore.user,
+    user: myStore.user || '',
     folders: myStore.folders || [],
-    cards: myStore.cards || []
+    cards: myStore.cards || [],
+    loggedIn: myStore.loggedIn || false
   };
 };
 
@@ -30,35 +31,53 @@ var AppView = React.createClass({
 
   _onRefreshState: function(myStore){
     this.setState( _getStateFromStore(myStore.val()), function(){
-      console.log('_onRefreshState', this.state);
+      // console.log('_onRefreshState', this.state);
     }.bind(this) );
+    this.checkEditable();
   },
 
-  componentWillMount: function(){
-    Actions.auth();
-
+  getUserIdFromCurrentPath: function(){
     var currentPath = this.getCurrentPath();
-
     var matchedUserIdRe = currentPath.match('\/user\/([^\/]+)');
-    var currentPathUserId = matchedUserIdRe && matchedUserIdRe[1];
+    return matchedUserIdRe && matchedUserIdRe[1];
+  },
 
-    var isEditable = (currentPathUserId ===
-      this.props.data && this.props.data.user && this.props.data.user.id);
+  //switch between the editable store and
+  //the read-only pseudo store
+  checkEditable: function(){
+    var userIdFromCurrentPath = this.getUserIdFromCurrentPath();
+    var isEditable = ( '' + userIdFromCurrentPath ===
+                       '' + (this.state.user && this.state.user.id) );
 
     this.setState({
       isEditable: isEditable
     });
 
-    if(!isEditable) {
+    return isEditable;
+  },
+
+  useReadOnlyStoreOrNot: function(){
+    //need the value of isEditable coz setState is async
+    var isEditable = this.checkEditable();
+    var userIdFromCurrentPath = this.getUserIdFromCurrentPath();
+
+    if(userIdFromCurrentPath && !isEditable) {
       var FirebaseModel = Backbone.Firebase.Model.extend({
-        firebase: "https://learnot.firebaseIO.com/people/" + currentPathUserId
+        firebase: "https://learnot.firebaseIO.com/people/" + userIdFromCurrentPath
       });
 
       var readonlyStore = new FirebaseModel();
       readonlyStore.firebase.on('value', function(storeSnap){
-        this.setState( storeSnap.val() );
+        var nextState = storeSnap.val();
+        nextState.loggedIn = false; //force showing logged out, todo, refactor
+        this.setState( nextState );
       }.bind(this));
     }
+  },
+
+  componentWillMount: function(){
+    Actions.auth();
+    this.useReadOnlyStoreOrNot();
   },
 
   componentDidMount: function(){
@@ -79,7 +98,9 @@ var AppView = React.createClass({
     var user = this.state.user || '';
     return (
       <div>
-        <Header user={user}/>
+        <Header
+          loggedIn={this.state.loggedIn}
+          user={user}/>
         <RB.Grid className='main'>
           <RB.Row>
             <RB.Col sm={12}>

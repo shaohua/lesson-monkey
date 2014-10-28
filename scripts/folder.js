@@ -4,11 +4,15 @@ var _ = require('underscore'),
   React = require('react'),
   RB = require('react-bootstrap'),
   Link = ReactRouter.Link,
+  InputEditable = require('./input_editable'),
   Actions = require('./actions');
 
 var Folder = React.createClass({
   getInitialState: function(){
-    return {isDropSuccess: false};
+    return {
+      isDropSuccess: false,
+      isFolderEditable: false
+    };
   },
 
   // clear state after 1 second
@@ -45,6 +49,26 @@ var Folder = React.createClass({
     }.bind(this));
   },
 
+  editFolderName: function(event){
+    this.toggleFolderEditable(false);
+    Actions.updateFolder({
+      folderIndex: this.props.domIndex,
+      folderName: event.target.value
+    });
+  },
+
+  toggleFolderEditable: function(flag){
+    if(typeof flag !== 'undefined'){
+      this.setState({
+        isFolderEditable: !!flag
+      });
+    }else{
+      this.setState({
+        isFolderEditable: !this.state.isFolderEditable
+      });
+    }
+  },
+
   render: function(){
     var cx = React.addons.classSet;
     var classes = cx({
@@ -62,7 +86,12 @@ var Folder = React.createClass({
         onDragOver={this.preventDefault}
         onDrop={this.onDrop}
         className={classes}>
-        <RB.Glyphicon glyph="folder-open" /> {this.props.folderName}
+          <RB.Glyphicon glyph="folder-open" />&nbsp;
+          <RB.Glyphicon onClick={this.toggleFolderEditable} glyph="edit" />&nbsp;
+          <InputEditable
+            isEditable={this.state.isFolderEditable}
+            onChange={this.editFolderName}
+            text={this.props.folderName}/>
       </Link>
     );
   }

@@ -108,6 +108,15 @@ vent.on('folder:create', function(){
   Store.set('folders', foldersCopy);
 });
 
+vent.on('folder:update', function(payload){
+  var foldersCopy = deepcopy(Store.get('folders'));
+  foldersCopy = foldersCopy || [];
+
+  var currentFolder = foldersCopy[payload.folderIndex];
+  currentFolder.name = payload.folderName;
+  Store.set('folders', foldersCopy);
+});
+
 vent.on('folderIndex:update', function(newIndex){
   Store && Store.set('folderIndex', newIndex);
 });

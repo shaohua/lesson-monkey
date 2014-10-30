@@ -83,13 +83,12 @@ body {
   background-color: transparent;
 
   .card-panel-body {
-    display: table;
     min-height: 150px;
     padding: 0;
     text-align: center;
 
     .card-row {
-      display: table-row;
+      overflow: hidden;
       height: 100%;
       background-color: #F5F5F5;
       &:before, &:after {
@@ -98,7 +97,6 @@ body {
       }
 
       .card-col {
-        display: table-cell;
         float: none;
         vertical-align: middle;
       }
@@ -126,70 +124,74 @@ body {
 
 //http://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout
 //https://stackoverflow.com/questions/18516317/vertically-align-an-image-inside-a-div-with-responsive-height
-.card-pop {
+.two-squares {
+  overflow: hidden;
   .square {
-    &:before {
-      content: "";
-      display: block;
-      padding-top: 100%; /* initial ratio of 1:1*/
-    }
-    .square-inner {
+    position: relative;
+    float: left;
+    width: 50%;
+    padding-top: 50%;
+    .square-inner-center {
       position: absolute;
       top:      0;
       left:     0;
       bottom:   0;
       right:    0;
-
-      // overflow: hidden; //just for image
-
-      &:before {
-        content: "";
-        display: inline-block;
-        vertical-align: middle;  /* vertical alignment of the inline element */
-        height: 100%;
-      }
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       img {
         max-height:100%;
         max-width:100%;
-        vertical-align: middle;
-        display: inline-block;
+        display: block;
       }
     }
-  }
-
-  .card-right-col {
-    font-size: 28px;
-  }
-
-  .card-row {
-    position: relative;
-    .card-nav-prev {
+    .square-inner-left {
       position: absolute;
-      top: 50%;
-      left: 0;
-      margin-left: -12px;
-      margin-top: -36px;
-      cursor: pointer;
+      top:      0;
+      left:     0;
+      bottom:   0;
+      right:    0;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: space-between;
     }
-    .card-nav-next {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      margin-right: -12px;
-      margin-top: -36px;
-      cursor: pointer;
-    }
-    .icon {
-      width: 50px;
-      height: 50px;
-      font-size: 24px;
-      line-height: 50px;
-      text-align: center;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 25px;
-    }
+  }
+}
+
+.card-right-col {
+  font-size: 28px;
+}
+
+.card-row {
+  position: relative;
+  .card-nav-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-left: -12px;
+    margin-top: -36px;
+    cursor: pointer;
+  }
+  .card-nav-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-right: -12px;
+    margin-top: -36px;
+    cursor: pointer;
+  }
+  .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 25px;
   }
 }
 

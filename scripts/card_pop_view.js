@@ -49,55 +49,55 @@ var CardPopView = React.createClass({
     var card = this.props.card,
       cardId = this.props.cardId;
 
-    var rowClass = 'card-row ' + this.getRandomBgColor();
+    var colorClass = this.getRandomBgColor();
 
     return (
       <div className="panel panel-success card-panel">
         <div className="panel-body card-panel-body">
-          <RB.Row className={rowClass}>
-            <RB.Col xs={6} className='card-col card-left-col'>
-              <div className="square">
-                <div className="square-inner">
-                  <span className="square-inner-helper"></span>
+          <RB.Row className='card-row'>
+            <RB.Col xs={12} className="two-squares">
+
+              <div className={"square " + colorClass}>
+                <div className="square-inner-center">
                   <img src={card.imgUrl}/>
                 </div>
               </div>
-            </RB.Col>
-            <RB.Col xs={6} className='card-col card-right-col'>
-              <div>
-                <h1>
+
+              <div className="square">
+                <div className="square-inner-left">
+                  <h2>
+                    <ContentEditable
+                      isEditable={this.props.isEditable}
+                      html={card.title}
+                      onChange={this.handleTitleChange} />
+                  </h2>
                   <ContentEditable
                     isEditable={this.props.isEditable}
-                    html={card.title}
-                    onChange={this.handleTitleChange} />
-                </h1>
+                    html={card.content}
+                    onChange={this.handleContentChange} />
+                  <div className='card-right-bottom-col'>
+                    <span
+                      onClick={this.onCardEdit}
+                      className="icon icon-edit"></span>
+                    <span>&nbsp;</span>
+                    <a href={card.htmlUrl} target='_blank'>
+                      Read Original Article
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div>
-                <ContentEditable
-                  isEditable={this.props.isEditable}
-                  html={card.content}
-                  onChange={this.handleContentChange} />
+
+              <div
+                onClick={this.onNavPrev}
+                className="card-nav-prev">
+                <span className="icon icon-left-nav"></span>
               </div>
-              <div className='card-right-bottom-col'>
-                <span
-                  onClick={this.onCardEdit}
-                  className="icon icon-edit"></span>
-                <span>&nbsp;</span>
-                <a href={card.htmlUrl} target='_blank'>
-                  Read Original Article
-                </a>
+              <div
+                onClick={this.onNavNext}
+                className="card-nav-next">
+                <span className="icon icon-right-nav"></span>
               </div>
             </RB.Col>
-            <div
-              onClick={this.onNavPrev}
-              className="card-nav-prev">
-              <span className="icon icon-left-nav"></span>
-            </div>
-            <div
-              onClick={this.onNavNext}
-              className="card-nav-next">
-              <span className="icon icon-right-nav"></span>
-            </div>
           </RB.Row>
         </div>
       </div>

@@ -71,10 +71,12 @@ var CardPopView = React.createClass({
                       html={card.title}
                       onChange={this.handleTitleChange} />
                   </h2>
-                  <ContentEditable
-                    isEditable={this.props.isEditable}
-                    html={card.content}
-                    onChange={this.handleContentChange} />
+                  <div className="card-main-text">
+                    <ContentEditable
+                      isEditable={this.props.isEditable}
+                      html={card.content}
+                      onChange={this.handleContentChange} />
+                  </div>
                   <div className='card-right-bottom-col'>
                     <span
                       onClick={this.onCardEdit}

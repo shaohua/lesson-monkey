@@ -86,37 +86,7 @@ body {
     min-height: 150px;
     padding: 0;
     text-align: center;
-
-    .card-row {
-      overflow: hidden;
-      height: 100%;
-      background-color: #F5F5F5;
-      &:before, &:after {
-        //remve bootstrap default
-        content: none;
-      }
-
-      .card-col {
-        float: none;
-        vertical-align: middle;
-      }
-
-      .card-left-col {
-        //blank for now
-      }
-
-      .card-right-col {
-        background-color: #FFFFFF;
-        position: relative;
-        text-align: left;
-        vertical-align: top;
-        .card-right-bottom-col {
-          position: absolute;
-          bottom: 0;
-          right: 2px;
-        }
-      }
-    }
+    background-color: #F5F5F5;
   }
 }
 
@@ -161,12 +131,16 @@ body {
   }
 }
 
-.card-right-col {
-  font-size: 28px;
+.card-main-text {
+  font-size: 24px;
 }
 
 .card-row {
   position: relative;
+  &:before, &:after {
+    //remve bootstrap default
+    content: none;
+  }
   .card-nav-prev {
     position: absolute;
     top: 50%;

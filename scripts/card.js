@@ -61,9 +61,9 @@ var Card = React.createClass({
 
                 <div className="square">
                   <div className="square-inner-left">
-                    <h2>
+                    <h5>
                       {card.title.substring(0,10) + '..'}
-                    </h2>
+                    </h5>
                     <div>
                       {card.content.substring(0,60) + '..'}
                     </div>

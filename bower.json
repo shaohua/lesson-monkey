@@ -23,7 +23,7 @@
     "font-awesome": "~4.1.0",
     "backbone": "~1.1.0",
     "react-router": "~0.9.4",
-    "ratchet2": "https://github.com/twbs/ratchet.git",
+    "ratchet-icons": "*",
     "firebase": "~2.0.0",
     "backfire": "~0.3.0"
   }

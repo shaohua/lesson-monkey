@@ -38,7 +38,7 @@ var AppView = React.createClass({
 
   getUserIdFromCurrentPath: function(){
     var currentPath = this.getCurrentPath();
-    var matchedUserIdRe = currentPath.match('\/user\/([^\/]+)');
+    var matchedUserIdRe = currentPath.match('^\/([^\/]+)');
     return matchedUserIdRe && matchedUserIdRe[1];
   },
 

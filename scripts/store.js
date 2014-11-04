@@ -1,4 +1,4 @@
-/* global Firebase, FirebaseSimpleLogin */
+/* global Firebase */
 var vent = require('./vent').getInstance(),
   _ = require('underscore'),
   $ = require('jquery'),
@@ -52,15 +52,15 @@ var _initStore = function(userId){
 vent.on('auth', function(){
   //auth callback will be invoked any time that
   //the user's authentication state changed
-  firebaseAuth = new FirebaseSimpleLogin(firebaseRef, function(error, user) {
-    if (error) return;
+  firebaseRef.onAuth(function(authData) {
     var userObj;
-    if(user && user.id) {
+
+    if (authData) {
+      // user authenticated with Firebase
       userObj = {
-        id: user.id,
-        uid: user.uid,
-        provider: user.provider,
-        username: user.email
+        id: authData.twitter.username,
+        uid: authData.uid,
+        provider: authData.provider
       };
 
       //bind the store to a dynamic URL
@@ -71,24 +71,24 @@ vent.on('auth', function(){
         loggedIn: true
       });
     }else{
+      // user is logged out
       Store && Store.set({
         loggedIn: false
       });
     }
-
-  }.bind(this));
+  });
 });
 
 vent.on('auth:login', function(){
-  firebaseAuth.login('google', {
-    rememberMe: true,
-    scope: 'https://www.googleapis.com/auth/plus.login,' +
-           'https://www.googleapis.com/auth/drive'
+  firebaseRef.authWithOAuthPopup("twitter", function(err, authData) {
+    if(err){
+      console.log('Auth err!');
+    }
   });
 });
 
 vent.on('auth:logout', function(){
-  firebaseAuth.logout();
+  firebaseRef.unauth();
   //true to reload from the server rather than the cache
   location.reload(true);
 });

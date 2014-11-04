@@ -1,4 +1,4 @@
-/* global Firebase, FirebaseSimpleLogin */
+/* global Firebase */
 var vent = require('./vent').getInstance(),
   _ = require('underscore'),
   $ = require('jquery'),

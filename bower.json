@@ -24,12 +24,7 @@
     "backbone": "~1.1.0",
     "react-router": "~0.9.4",
     "ratchet2": "https://github.com/twbs/ratchet.git",
-    "firebase": "~1.0.0",
-    "firebase-simple-login": "~1.6.4",
+    "firebase": "~2.0.0",
     "backfire": "~0.3.0"
-  },
-  "resolutions": {
-    "firebase": "1.0.x",
-    "backbone": "<=1.1.0"
   }
 }

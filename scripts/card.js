@@ -26,7 +26,7 @@ var Card = React.createClass({
   onClickCard: function(){
     //todo
     //get everything from route
-    var nextRoute = '/user/' + this.props.params.userId +
+    var nextRoute = '/' + this.props.params.userId +
       '/folder/' + this.props.card.folderIndex +
       '/card/' + this.props.card.id;
     this.transitionTo(nextRoute);

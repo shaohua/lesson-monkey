@@ -77,7 +77,7 @@ var Folder = React.createClass({
       'active': (this.props.activeFolderIndex === this.props.domIndex)
     });
 
-    var folderUrl = '/user/' + this.props.userId
+    var folderUrl = '/' + this.props.userId
                   + '/folder/' + this.props.domIndex ;
 
     return (

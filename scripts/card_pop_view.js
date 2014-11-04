@@ -16,14 +16,14 @@ var CardPopView = React.createClass({
   },
 
   onNavPrev: function(){
-    var prevRoute = '/user/' + this.props.userId +
+    var prevRoute = '/' + this.props.userId +
       '/folder/' + this.props.card.folderIndex +
       '/card/' + this.props.prevCardId;
     this.transitionTo(prevRoute);
   },
 
   onNavNext: function(){
-    var nextRoute = '/user/' + this.props.userId +
+    var nextRoute = '/' + this.props.userId +
       '/folder/' + this.props.card.folderIndex +
       '/card/' + this.props.nextCardId;
     this.transitionTo(nextRoute);

@@ -19,6 +19,21 @@ LessonMonkey, build bite-size lessons in minutes from a list of URLs
 
 ### Screenshots:
 ![Homepage](http://i.imgur.com/kWorvjj.png)
+<br />
+<br />
+<hr>
+<br />
+<br />
 ![Login with twitter](http://i.imgur.com/tHPg72m.png)
+<br />
+<br />
+<hr>
+<br />
+<br />
 ![User profile page](http://i.imgur.com/EPvx83X.png)
+<br />
+<br />
+<hr>
+<br />
+<br />
 ![One slide](http://i.imgur.com/HI0K2gH.png)

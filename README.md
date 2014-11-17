@@ -1,5 +1,8 @@
-LessonMonkey, build bite-size lessons in minutes from a list of URLs
+LessonMonkey (code name learnot), build bite-size lessons in minutes from a list of URLs
 =======
+
+### Demo
+- [demo](https://learnot.firebaseapp.com/)
 
 ### Stack:
 - React.js

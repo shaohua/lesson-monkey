@@ -5,7 +5,7 @@ LessonMonkey (code name learnot), build bite-size lessons in minutes from a list
 - Trying to find out the best way to make React Router work with Flux
 
 ### Demo
-- [demo](https://learnot.firebaseapp.com/)
+- [demo](https://learnot.firebaseapp.com/getshao/folder/0)
 
 ### Stack:
 - React.js

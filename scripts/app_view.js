@@ -37,7 +37,10 @@ var AppView = React.createClass({
   },
 
   getUserIdFromCurrentPath: function(){
-    var currentPath = this.getCurrentPath();
+    // todo
+    // either this is not working or I misunderstood the API
+    // var currentPath = this.getCurrentPath();
+    var currentPath = window.location.pathname;
     var matchedUserIdRe = currentPath.match('^\/([^\/]+)');
     return matchedUserIdRe && matchedUserIdRe[1];
   },
@@ -73,6 +76,12 @@ var AppView = React.createClass({
         this.setState( nextState );
       }.bind(this));
     }
+  },
+
+  //todo
+  //investigate the best way to check for path
+  componentWillReceiveProps: function(nextProps){
+    this.useReadOnlyStoreOrNot();
   },
 
   componentWillMount: function(){

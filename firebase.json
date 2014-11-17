@@ -1,0 +1,13 @@
+{
+  "firebase": "learnot",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rewrites": [ {
+    "source": "**/*!(.jpg|.jpeg|.gif|.png|.html|.js|.css|.svg|.eot|.ttf|.woff)",
+    "destination": "/index.html"
+  } ]
+}

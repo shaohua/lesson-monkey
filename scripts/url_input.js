@@ -60,8 +60,13 @@ var UrlInput = React.createClass({
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">
             <RB.Row className='card-row'>
-              <RB.Col xs={12} className='card-col'>
-                <form onSubmit={this.handleSubmit}>
+              <RB.Col xs={12} className="two-squares">
+                <div className="square" />
+                <div className="square" />
+
+                <form
+                  className='form-url-input'
+                  onSubmit={this.handleSubmit}>
                   <input
                     className="card-url-input"
                     type="text"
@@ -70,6 +75,7 @@ var UrlInput = React.createClass({
                     onChange={this.onInputChange} />
                   <RB.Button type="submit">Add URL</RB.Button>
                 </form>
+
               </RB.Col>
             </RB.Row>
           </div>

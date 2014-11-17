@@ -27,6 +27,3 @@ var MailingList = React.createClass({
 });
 
 module.exports = MailingList;
-
-
-

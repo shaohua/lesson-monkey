@@ -26,4 +26,3 @@ $(document).ready(function(){
     </Routes>
   ), $('#main-app')[0]);
 });
-

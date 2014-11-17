@@ -23,15 +23,15 @@ var HomeTopic = React.createClass({
     return (
       <div
         onClick={this.onClickhomeTopic}
-        className="col-lg-3 col-md-3 homeTopic-wrapper">
-            <div className="homeTopic-inner-block">
+        className="col-lg-3 col-md-3 home-topic-wrapper">
+            <div className="home-topic-inner-block">
                 <img
                   src={homeTopic.imgUrl}
-                  className="homeTopic-image"/>
-                <div className="homeTopic-inner-title">
+                  className="home-topic-image"/>
+                <div className="home-topic-inner-title">
                     <h4>{homeTopic.title}</h4>
                 </div>
-                <div className="homeTopic-inner-content">
+                <div className="home-topic-inner-content">
                   {homeTopic.content}
                 </div>
             </div>

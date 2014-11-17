@@ -1,6 +1,20 @@
 @import './input_editable.styl';
 @import './profile_card.styl';
 
+@media screen and (min-width: 992px) {
+  .home-topic-row,
+  .home-topic-wrapper {
+    //todo, use nib
+    //http://stackoverflow.com/a/22892773/1239621
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 0 auto;
+  }
+}
+
 body {
   background-color: #E5E5E5;
   padding-top: 50px;
@@ -19,30 +33,27 @@ body {
   width:100%;
   height:100%;
 
-  .homeTopic-wrapper {
-    margin-bottom:100px;
-  }
-
   .home-hot-topic-title {
     font-weight:bold;
   }
 
-  .homeTopic-inner-block {
+  .home-topic-inner-block {
+    width:100%;
     background-color:#F5F5F5;
     padding:5px;
   }
 
-  .homeTopic-image {
+  .home-topic-image {
     width:100%;
   }
 
-  .homeTopic-inner-title {
+  .home-topic-inner-title {
     padding-top:10px;
     padding-left:20px;
     padding-right:20px;
   }
 
-  .homeTopic-inner-content {
+  .home-topic-inner-content {
     padding-top:20px;
     padding-left:10px;
     padding-right:10px;

@@ -78,10 +78,8 @@ var HomeView = React.createClass({
             <h2 className="home-hot-topic-title">Popular lessons: </h2>
           </RB.Col>
         </RB.Row>
-        <RB.Row>
-          <RB.Col sm={12}>
-            {homeTopics}
-          </RB.Col>
+        <RB.Row className='home-topic-row'>
+          {homeTopics}
         </RB.Row>
 
         <RB.Row>

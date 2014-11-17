@@ -77,8 +77,8 @@ var Folder = React.createClass({
       'active': (this.props.activeFolderIndex === this.props.domIndex)
     });
 
-    var folderUrl = '/' + this.props.userId
-                  + '/folder/' + this.props.domIndex ;
+    var folderUrl = '/' + this.props.userId +
+                    '/folder/' + this.props.domIndex ;
 
     return (
       <Link to={folderUrl}

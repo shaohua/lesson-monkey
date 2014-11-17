@@ -28,7 +28,7 @@ var FolderView = React.createClass({
     //   htmlUrl: ''
     // };
     var cardsInCurrentFolder = _.filter(cards, function(card){
-      return card.folderIndex + '' === this.props.params.folderName + ''
+      return card.folderIndex + '' === this.props.params.folderName + '';
     }, this);
     var cardsRendered = _.map(cardsInCurrentFolder, function(card){
       return (<Card cardId={card.id} card={card} params={this.props.params}/>);

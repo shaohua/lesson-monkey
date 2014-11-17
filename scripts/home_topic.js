@@ -4,16 +4,21 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  Navigation = ReactRouter.Navigation,
   RB = require('react-bootstrap');
 
 var HomeTopic = React.createClass({
-
+  mixins: [ Navigation ],
 
   onClickhomeTopic: function(){
-    console.log('onClickhomeTopic');
+    // console.log('onClickhomeTopic');
     //todo
     //remove hardcoding
-    ReactRouter.transitionTo('folderPop', {folderName: 0, cardId: 0});
+    this.transitionTo('folderPop', {
+      userId: 'getshao',
+      folderName: 0,
+      cardId: 0
+    });
   },
 
   render: function(){

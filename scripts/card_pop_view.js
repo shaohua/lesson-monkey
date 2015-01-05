@@ -83,7 +83,7 @@ var CardPopView = React.createClass({
                       className="icon icon-edit"></span>
                     <span>&nbsp;</span>
                     <a href={card.htmlUrl} target='_blank'>
-                      Read Original Article
+                      <span className="icon icon-more"></span>
                     </a>
                   </div>
                 </div>

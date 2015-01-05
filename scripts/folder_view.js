@@ -20,13 +20,6 @@ var FolderView = React.createClass({
 
   render: function() {
     var cards = this.props.data && this.props.data.cards;
-    // var fakeCard = {
-    //   id: '1',
-    //   title: 'How to set up a WordPress blog',
-    //   content: 'WordPress is well-known. ',
-    //   imgUrl: 'http://static1.businessinsider.com/image/4fed86f0eab8ea8e6e000014-1200/the-pythagorean-theorem.jpg',
-    //   htmlUrl: ''
-    // };
     var cardsInCurrentFolder = _.filter(cards, function(card){
       return card.folderIndex + '' === this.props.params.folderName + '';
     }, this);

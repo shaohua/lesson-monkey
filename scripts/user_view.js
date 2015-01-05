@@ -15,18 +15,16 @@ var UserView = React.createClass({
 
   render: function() {
     return (
-      <RB.Grid className='main'>
-        <RB.Row>
-          <RB.Col sm={3}>
-            <Folders
-              params={this.props.params}
-              data={this.props.data}/>
-          </RB.Col>
-          <RB.Col sm={9}>
-            <this.props.activeRouteHandler data={this.props.data}/>
-          </RB.Col>
-        </RB.Row>
-      </RB.Grid>
+      <RB.Row>
+        <RB.Col sm={3}>
+          <Folders
+            params={this.props.params}
+            data={this.props.data}/>
+        </RB.Col>
+        <RB.Col sm={9}>
+          <this.props.activeRouteHandler data={this.props.data}/>
+        </RB.Col>
+      </RB.Row>
     );
   }
 });

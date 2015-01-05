@@ -22,6 +22,14 @@ var deepcopy = function(input){
   return JSON.parse(JSON.stringify(input));
 };
 
+//rely on firebase to generate unique id
+var uidURL = "https://learnot.firebaseIO.com/utils/uid";
+var uidRef = new Firebase(uidURL);
+var getUid = function(){
+  var newChildRef = uidRef.push();
+  return newChildRef.key();
+};
+
 /**
  * Init data
  */
@@ -136,12 +144,12 @@ vent.on('card:create', function(payload){
   }
 
   var cardsCopy = deepcopy(Store.get('cards'));
-  cardsCopy = cardsCopy || [];
+  cardsCopy = cardsCopy || {};
 
   payload.folderIndex = currentFolderIndex;
-  payload.id = cardsCopy.length;  //todo, not a good idea
+  var uid = getUid();
 
-  cardsCopy.push(payload);
+  cardsCopy[uid] = payload;
 
   Store.set('cards', cardsCopy);
 });

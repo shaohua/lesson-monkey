@@ -3,6 +3,7 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   Navigation = ReactRouter.Navigation,
+  MonkeyText = require('./monkey_text'),
   RB = require('react-bootstrap');
 
 var Card = React.createClass({
@@ -18,11 +19,6 @@ var Card = React.createClass({
     // console.log('onDragEnd');
   },
 
-  getRandomBgColor: function(){
-    var bgColorList = ['green-sea', 'nephritis', 'belize-hole', 'wisteria', 'midnight-blue'];
-    return _.sample(bgColorList);
-  },
-
   onClickCard: function(){
     //todo
     //get everything from route
@@ -33,11 +29,6 @@ var Card = React.createClass({
   },
 
   render: function(){
-    var card = this.props.card,
-      cardId = this.props.cardId;
-
-    var colorClass = this.getRandomBgColor();
-
     return (
       <div
         draggable="true"
@@ -47,36 +38,8 @@ var Card = React.createClass({
         className="col-lg-6 col-md-6">
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">
-            <RB.Row className='card-row'>
-
-              <RB.Col xs={12} className="two-squares">
-
-                <div className={"square " + colorClass}>
-                  <div className="square-inner-center">
-                    <img
-                      src={card.imgUrl}
-                      className="img-responsive"/>
-                  </div>
-                </div>
-
-                <div className="square">
-                  <div className="square-inner-left">
-                    <h5>
-                      {card.title.substring(0,10) + '..'}
-                    </h5>
-                    <div>
-                      {card.content.substring(0,60) + '..'}
-                    </div>
-                    <div className='card-right-bottom-col'>
-                      <a href={card.htmlUrl} target='_blank'>
-                        <span className="icon icon-more"></span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </RB.Col>
-
-            </RB.Row>
+            <MonkeyText
+              card = {this.props.card} />
           </div>
         </div>
       </div>

@@ -165,21 +165,8 @@ vent.on('card:create', function(payload){
 });
 
 vent.on('card:update', function(payload){
-  var cardsCopy = deepcopy(Store.get('cards'));
-  cardsCopy = cardsCopy || [];
-
-  var matchedIndex = 0;
-  _.each(cardsCopy, function(card, index){
-    if(card.id + '' === payload.id + '') {
-      console.log('match card');
-      matchedIndex = index;
-      return;
-    }
-  });
-
-  //replace the card in matchedIndex with payload
-  cardsCopy.splice(matchedIndex, 1, payload);
-
+  var cardsCopy = deepcopy(Store.get('cards')) || {};
+  cardsCopy[payload.id] = payload;
   Store.set('cards', cardsCopy);
 });
 

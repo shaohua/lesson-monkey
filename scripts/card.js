@@ -39,6 +39,7 @@ var Card = React.createClass({
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">
             <CardLauncher
+              type = {this.props.card.type}
               card = {this.props.card} />
           </div>
         </div>

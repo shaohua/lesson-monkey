@@ -64,17 +64,22 @@ var UrlInput = React.createClass({
                 <div className="square" />
                 <div className="square" />
 
-                <form
-                  className='form-url-input'
-                  onSubmit={this.handleSubmit}>
-                  <input
-                    className="card-url-input"
-                    type="text"
-                    placeholder="Enter URL here"
-                    value={this.state.inputValue}
-                    onChange={this.onInputChange} />
-                  <RB.Button type="submit">Add URL</RB.Button>
-                </form>
+                <div className='card-new-container'>
+                  <div className="card-new-container-item">
+                    <form onSubmit={this.handleSubmit}>
+                      <input
+                        className="card-url-input"
+                        type="text"
+                        placeholder="Enter URL here"
+                        value={this.state.inputValue}
+                        onChange={this.onInputChange} />
+                      <RB.Button type="submit">Add a website</RB.Button>
+                    </form>
+                  </div>
+                  <div className="card-new-container-item">
+                    <RB.Button>Add a paragraph</RB.Button>
+                  </div>
+                </div>
 
               </RB.Col>
             </RB.Row>

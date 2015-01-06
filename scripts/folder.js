@@ -15,6 +15,10 @@ var Folder = React.createClass({
     };
   },
 
+  componentWillReceiveProps: function(nextProps){
+    // console.log('componentWillReceiveProps', nextProps);
+  },
+
   // clear state after 1 second
   resetDropSuccess: function(){
     setTimeout(function(){

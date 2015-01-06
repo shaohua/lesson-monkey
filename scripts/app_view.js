@@ -107,18 +107,16 @@ var AppView = React.createClass({
   render: function() {
     var user = this.state.user || '';
     return (
-      <div>
+      <RB.Grid>
         <Header
           loggedIn={this.state.loggedIn}
           user={user}/>
-        <RB.Grid className='main'>
-          <RB.Row>
-            <RB.Col sm={12}>
-              <RouteHandler data={this.state} />
-            </RB.Col>
-          </RB.Row>
-        </RB.Grid>
-      </div>
+        <RB.Row>
+          <RB.Col sm={12}>
+            <RouteHandler data={this.state} />
+          </RB.Col>
+        </RB.Row>
+      </RB.Grid>
     );
   }
 

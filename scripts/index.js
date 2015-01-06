@@ -25,6 +25,6 @@ $(document).ready(function(){
 
   ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Handler, state) {
     Actions.updateRoute( _.pick(state, ['path', 'params', 'query']) );
-    React.render(<Handler/>, $('#main-app')[0]);
+    React.render(<Handler/>, $('.main-app')[0]);
   });
 });

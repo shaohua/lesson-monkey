@@ -5,7 +5,7 @@ var _ = require('underscore'),
   React = require('react'),
   AppView = require('./app_view'),
   UserView = require('./user_view'),
-  FolderView = require('./folder_view'),
+  FolderDetailView = require('./folder_detail_view'),
   FolderPopView = require('./folder_pop_view'),
   HomeView = require('./homepage/home_view'),
   Route = ReactRouter.Route,
@@ -17,7 +17,7 @@ $(document).ready(function(){
     <Route name="app" path="/" handler={AppView}>
       <DefaultRoute handler={HomeView} />
       <Route name="user" path="/:userId" handler={UserView}>
-        <Route name="folder" path="/:userId/folder/:folderName" handler={FolderView}/>
+        <Route name="folderDetail" path="/:userId/folder/:folderName" handler={FolderDetailView}/>
       </Route>
       <Route name="folderPop" path="/:userId/folder/:folderName/card/:cardId" handler={FolderPopView}/>
     </Route>

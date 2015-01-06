@@ -9,7 +9,7 @@ var _ = require('underscore'),
   Store = require('./store'),
   Actions = require('./actions');
 
-var FolderView = React.createClass({
+var FolderDetailView = React.createClass({
   mixins: [ ReactRouter.State ],
 
   getInitialState: function(){
@@ -41,4 +41,4 @@ var FolderView = React.createClass({
   }
 });
 
-module.exports = FolderView;
+module.exports = FolderDetailView;

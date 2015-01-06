@@ -30,12 +30,12 @@ var Card = React.createClass({
 
   render: function(){
     return (
-      <div
+      <RB.Col
+        md={6}
         draggable="true"
         onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
-        onClick={this.onClickCard}
-        className="col-lg-6 col-md-6">
+        onClick={this.onClickCard}>
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">
             <CardLauncher
@@ -43,7 +43,7 @@ var Card = React.createClass({
               card = {this.props.card} />
           </div>
         </div>
-      </div>
+      </RB.Col>
     );
   }
 });

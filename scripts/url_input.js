@@ -71,9 +71,9 @@ var UrlInput = React.createClass({
 
   render: function() {
     var newCard = (
-      <div
-        onClick={this.onClickNewCard}
-        className="col-lg-6 col-md-6">
+      <RB.Col
+        md={6}
+        onClick={this.onClickNewCard}>
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">
             <RB.Row className='card-row'>
@@ -104,7 +104,7 @@ var UrlInput = React.createClass({
             </RB.Row>
           </div>
         </div>
-      </div>
+      </RB.Col>
     );
 
     return newCard;

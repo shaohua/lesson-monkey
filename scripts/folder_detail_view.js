@@ -32,10 +32,8 @@ var FolderDetailView = React.createClass({
 
     return (
       <RB.Row>
-        <RB.Col sm={12}>
-          <UrlInput />
-          {cardsRendered}
-        </RB.Col>
+        <UrlInput />
+        {cardsRendered}
       </RB.Row>
     );
   }

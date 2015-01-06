@@ -14,7 +14,8 @@
     "nib": "^1.0.3",
     "node-jsx": "^0.12.4",
     "reactify": "^0.17.1",
-    "stylus": "^0.47.3"
+    "stylus": "^0.47.3",
+    "grunt-contrib-clean": "^0.6.0"
   },
   "scripts": {
     "postinstall": "bower install"

@@ -2,6 +2,7 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  RouteHandler = ReactRouter.RouteHandler,
   RB = require('react-bootstrap'),
   Folders = require('./folders'),
   ProfileCard = require('./profile_card'),
@@ -9,6 +10,8 @@ var _ = require('underscore'),
   Actions = require('./actions');
 
 var UserView = React.createClass({
+  mixins: [ ReactRouter.State ],
+
   getInitialState: function(){
     return {};
   },
@@ -18,11 +21,11 @@ var UserView = React.createClass({
       <RB.Row>
         <RB.Col sm={3}>
           <Folders
-            params={this.props.params}
+            params={this.getParams()}
             data={this.props.data}/>
         </RB.Col>
         <RB.Col sm={9}>
-          <this.props.activeRouteHandler data={this.props.data}/>
+          <RouteHandler data={this.props.data}/>
         </RB.Col>
       </RB.Row>
     );

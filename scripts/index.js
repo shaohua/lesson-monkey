@@ -8,21 +8,23 @@ var _ = require('underscore'),
   FolderView = require('./folder_view'),
   FolderPopView = require('./folder_pop_view'),
   HomeView = require('./home_view'),
-  Routes = ReactRouter.Routes,
   Route = ReactRouter.Route,
   DefaultRoute = ReactRouter.DefaultRoute,
-  Link = ReactRouter.Link;
+  Actions = require('./actions');
 
 $(document).ready(function(){
-  React.renderComponent((
-    <Routes location="history">
-      <Route path="/" handler={AppView}>
-        <DefaultRoute handler={HomeView} />
-        <Route name="user" path="/:userId" handler={UserView}>
-          <Route name="folder" path="/:userId/folder/:folderName" handler={FolderView}/>
-        </Route>
-        <Route name="folderPop" path="/:userId/folder/:folderName/card/:cardId" handler={FolderPopView}/>
+  var routes = (
+    <Route name="app" path="/" handler={AppView}>
+      <DefaultRoute handler={HomeView} />
+      <Route name="user" path="/:userId" handler={UserView}>
+        <Route name="folder" path="/:userId/folder/:folderName" handler={FolderView}/>
       </Route>
-    </Routes>
-  ), $('#main-app')[0]);
+      <Route name="folderPop" path="/:userId/folder/:folderName/card/:cardId" handler={FolderPopView}/>
+    </Route>
+  );
+
+  ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Handler, state) {
+    // Actions.updateRoute(state);
+    React.render(<Handler/>, $('#main-app')[0]);
+  });
 });

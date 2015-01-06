@@ -11,6 +11,8 @@ var _ = require('underscore'),
   Actions = require('./actions');
 
 var FolderPopView = React.createClass({
+  mixins: [ ReactRouter.State ],
+
   getInitialState: function(){
     return {};
   },
@@ -19,9 +21,9 @@ var FolderPopView = React.createClass({
     var cards = this.props.data && this.props.data.cards;
     if (typeof cards === 'undefined') return (<div/>);
 
-    var  folderName = this.props.params.folderName,
-      userId = this.props.params.userId,
-      cardId = this.props.params.cardId,
+    var  folderName = this.getParams().folderName,
+      userId = this.getParams().userId,
+      cardId = this.getParams().cardId,
       prevCardId = parseInt(cardId, 10) - 1,
       nextCardId = parseInt(cardId, 10) + 1,
       card = cards[cardId];

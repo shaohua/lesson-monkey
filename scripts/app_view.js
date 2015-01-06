@@ -4,6 +4,7 @@ var _ = require('underscore'),
   React = require('react'),
   RB = require('react-bootstrap'),
   Header = require('./header'),
+  RouteHandler = ReactRouter.RouteHandler,
   Link = ReactRouter.Link,
   CurrentPath = ReactRouter.CurrentPath,
   ProfileCard = require('./profile_card'),
@@ -113,7 +114,7 @@ var AppView = React.createClass({
         <RB.Grid className='main'>
           <RB.Row>
             <RB.Col sm={12}>
-              <this.props.activeRouteHandler data={this.state}/>
+              <RouteHandler data={this.state} />
             </RB.Col>
           </RB.Row>
         </RB.Grid>

@@ -101,6 +101,13 @@ vent.on('auth:logout', function(){
   location.reload(true);
 });
 
+/**
+ * For route
+ */
+vent.on('route:update', function(payload){
+  Store && Store.set('route', payload);
+  // console.log('payload', payload);
+});
 
 /**
  * For folders

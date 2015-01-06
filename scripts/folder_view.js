@@ -10,21 +10,23 @@ var _ = require('underscore'),
   Actions = require('./actions');
 
 var FolderView = React.createClass({
+  mixins: [ ReactRouter.State ],
+
   getInitialState: function(){
     return {};
   },
 
   componentDidMount: function(){
-    Actions.updateFolderIndex(this.props.params.folderName);
+    Actions.updateFolderIndex(this.getParams().folderName);
   },
 
   render: function() {
     var cards = this.props.data && this.props.data.cards;
     var cardsInCurrentFolder = _.filter(cards, function(card){
-      return card.folderIndex + '' === this.props.params.folderName + '';
+      return card.folderIndex + '' === this.getParams().folderName + '';
     }, this);
     var cardsRendered = _.map(cardsInCurrentFolder, function(card){
-      return (<Card cardId={card.id} card={card} params={this.props.params}/>);
+      return (<Card cardId={card.id} card={card} params={this.getParams()}/>);
     }, this);
 
 

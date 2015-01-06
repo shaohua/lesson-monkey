@@ -121,7 +121,10 @@ vent.on('folder:update', function(payload){
   foldersCopy = foldersCopy || [];
 
   var currentFolder = foldersCopy[payload.folderIndex];
-  currentFolder.name = payload.folderName;
+  if(payload.folderName){
+    currentFolder.name = payload.folderName;
+  }
+
   Store.set('folders', foldersCopy);
 });
 
@@ -170,6 +173,12 @@ vent.on('card:update', function(payload){
   //replace the card in matchedIndex with payload
   cardsCopy.splice(matchedIndex, 1, payload);
 
+  Store.set('cards', cardsCopy);
+});
+
+vent.on('card:move', function(payload){
+  var cardsCopy = deepcopy(Store.get('cards')) || {};
+  cardsCopy[payload.cardId].folderIndex = payload.folderIndex;
   Store.set('cards', cardsCopy);
 });
 

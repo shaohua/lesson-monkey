@@ -32,13 +32,8 @@ var Folder = React.createClass({
   onDrop: function(event){
     event.preventDefault();
 
-    var inputData = '';
-    try {
-      inputData = JSON.parse(event.dataTransfer.getData('text'));
-    } catch (e) {
-      console.log('Error parsing dropped data: ', e);
-    }
-    Actions.updateFolder({
+    var inputData = '' + event.dataTransfer.getData('text');
+    Actions.moveCard({
       folderIndex: this.props.domIndex,
       cardId: inputData
     });

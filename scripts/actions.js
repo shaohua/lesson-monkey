@@ -33,6 +33,10 @@ var Actions = {
     vent.trigger('card:update', payload);
   },
 
+  moveCard: function(payload){
+    vent.trigger('card:move', payload);
+  },
+
   offFirebase: function(){
     vent.trigger('firebase:off');
   }

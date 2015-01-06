@@ -1,92 +1,20 @@
+@import './colors.styl';
 @import './input_editable.styl';
 @import './profile_card.styl';
 @import './mailing_list.styl';
 @import './url_input.styl';
+@import './homepage.styl';
 
-@media screen and (min-width: 992px) {
-  .home-topic-row,
-  .home-topic-wrapper {
-    //todo, use nib
-    //http://stackoverflow.com/a/22892773/1239621
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex:1 0 auto;
-  }
-}
-
-html {
+html,
+body,
+.main-app {
   height: 100%;
 }
 
 body {
   background-color: #E5E5E5;
   padding-top: 50px;
-  position: relative !important;
-  height: 100%;
 }
-
-.main {
-  width:100%;
-  height:100%;
-
-  .home-hot-topic-title {
-    font-weight:bold;
-  }
-
-  .home-topic-inner-block {
-    width:100%;
-    background-color:#F5F5F5;
-    padding:5px;
-  }
-
-  .home-topic-image {
-    width:100%;
-  }
-
-  .home-topic-inner-title {
-    padding-top:10px;
-    padding-left:20px;
-    padding-right:20px;
-  }
-
-  .home-topic-inner-content {
-    padding-top:20px;
-    padding-left:10px;
-    padding-right:10px;
-    padding-bottom:10px;
-  }
-
-  .home-search {
-    width: 100%;
-    height: 60px;
-    background-color:#F5F5F5;
-    position: relative;
-
-    .home-search-input {
-      width: 100%;
-      height: 100%;
-      font-size:140%;
-      border:none;
-      margin-bottom: 0;
-    }
-
-    .home-search-button {
-      position: absolute;
-      height: 100%;
-      right: 0;
-      border:none;
-      color:white;
-      font-size:160%;
-      background-color:black;
-    }
-  }
-
-
-}
-
 
 .card-panel {
   border: 0;
@@ -183,25 +111,4 @@ body {
     border: 1px solid #ddd;
     border-radius: 25px;
   }
-}
-
-
-.green-sea {
-  background-color: #17ab8e !important;
-}
-
-.nephritis {
-  background-color: #27ae60 !important;
-}
-
-.belize-hole {
-  background-color: #2980b9 !important;
-}
-
-.wisteria {
-  background-color: #8e44ad !important;
-}
-
-.midnight-blue {
-  background-color: #8e44ad !important;
 }

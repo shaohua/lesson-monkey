@@ -145,7 +145,6 @@ vent.on('folderIndex:update', function(newIndex){
 vent.on('card:create', function(payload){
   var currentFolderIndex = Store.get('folderIndex') || 0;
 
-  console.log('card:create', payload);
   //deal with undefined from embedly
   for(var key in payload) {
     if(payload.hasOwnProperty(key)){
@@ -153,12 +152,10 @@ vent.on('card:create', function(payload){
     }
   }
 
-  var cardsCopy = deepcopy(Store.get('cards'));
-  cardsCopy = cardsCopy || {};
-
   payload.folderIndex = currentFolderIndex;
   payload.id = getUid();
 
+  var cardsCopy = deepcopy(Store.get('cards')) || {};
   cardsCopy[payload.id] = payload;
 
   Store.set('cards', cardsCopy);

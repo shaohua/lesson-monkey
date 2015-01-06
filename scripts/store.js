@@ -147,9 +147,9 @@ vent.on('card:create', function(payload){
   cardsCopy = cardsCopy || {};
 
   payload.folderIndex = currentFolderIndex;
-  var uid = getUid();
+  payload.id = getUid();
 
-  cardsCopy[uid] = payload;
+  cardsCopy[payload.id] = payload;
 
   Store.set('cards', cardsCopy);
 });

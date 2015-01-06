@@ -111,11 +111,7 @@ var AppView = React.createClass({
         <Header
           loggedIn={this.state.loggedIn}
           user={user}/>
-        <RB.Row>
-          <RB.Col sm={12}>
-            <RouteHandler data={this.state} />
-          </RB.Col>
-        </RB.Row>
+        <RouteHandler data={this.state} />
       </RB.Grid>
     );
   }

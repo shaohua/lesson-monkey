@@ -3,7 +3,7 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   Navigation = ReactRouter.Navigation,
-  MonkeyText = require('./monkey_text'),
+  CardLauncher = require('./card_launcher'),
   RB = require('react-bootstrap');
 
 var Card = React.createClass({
@@ -38,7 +38,7 @@ var Card = React.createClass({
         className="col-lg-6 col-md-6">
         <div className="panel panel-success card-panel">
           <div className="panel-body card-panel-body">
-            <MonkeyText
+            <CardLauncher
               card = {this.props.card} />
           </div>
         </div>

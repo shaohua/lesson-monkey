@@ -8,7 +8,7 @@ var _ = require('underscore'),
   Link = ReactRouter.Link,
   CurrentPath = ReactRouter.CurrentPath,
   ProfileCard = require('./profile_card'),
-  HomeView = require('./home_view'),
+  HomeView = require('./homepage/home_view'),
   Store = require('./store'),
   Actions = require('./actions');
 

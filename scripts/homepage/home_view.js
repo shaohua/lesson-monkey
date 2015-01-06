@@ -3,12 +3,12 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   RB = require('react-bootstrap'),
-  Header = require('./header'),
+  Header = require('../header'),
   Link = ReactRouter.Link,
   HomeTopic = require('./home_topic'),
   MailingList = require('./mailing_list'),
-  HomeStore = require('./store_home'),
-  Actions = require('./actions');
+  HomeStore = require('../store_home'),
+  Actions = require('../actions');
 
 var HomeView = React.createClass({
   getInitialState: function(){

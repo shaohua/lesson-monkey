@@ -7,7 +7,7 @@ var _ = require('underscore'),
   UserView = require('./user_view'),
   FolderView = require('./folder_view'),
   FolderPopView = require('./folder_pop_view'),
-  HomeView = require('./home_view'),
+  HomeView = require('./homepage/home_view'),
   Route = ReactRouter.Route,
   DefaultRoute = ReactRouter.DefaultRoute,
   Actions = require('./actions');
@@ -24,7 +24,7 @@ $(document).ready(function(){
   );
 
   ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Handler, state) {
-    // Actions.updateRoute(state);
+    Actions.updateRoute( _.pick(state, ['path', 'params', 'query']) );
     React.render(<Handler/>, $('#main-app')[0]);
   });
 });

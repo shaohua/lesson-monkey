@@ -3,6 +3,7 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   MonkeyText = require('./monkey_text'),
+  MonkeyTextEdit = require('./monkey_text_edit'),
   MonkeyImageText = require('./monkey_image_text'),
   MonkeyImageTextEdit = require('./monkey_image_text_edit'),
   RB = require('react-bootstrap');
@@ -32,9 +33,8 @@ var CardLauncher = React.createClass({
         );
         break;
       case 'MonkeyTextEdit':
-        //todo, fix this
         component = (
-          <MonkeyImageTextEdit
+          <MonkeyTextEdit
             isEditable = {true}
             card = {this.props.card} />
         );

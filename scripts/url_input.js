@@ -73,36 +73,31 @@ var UrlInput = React.createClass({
     var newCard = (
       <RB.Col
         md={6}
+        className='card-container'
         onClick={this.onClickNewCard}>
-        <div className="panel panel-success card-panel">
-          <div className="panel-body card-panel-body">
-            <RB.Row className='card-row'>
-              <RB.Col xs={12} className="two-squares">
-                <div className="square" />
-                <div className="square" />
+        <div className="two-squares">
+          <div className="square" />
+          <div className="square" />
 
-                <div className='card-new-container'>
-                  <div className="card-new-container-item">
-                    <form onSubmit={this.handleSubmit}>
-                      <input
-                        className="card-url-input"
-                        type="text"
-                        placeholder="Enter URL here"
-                        value={this.state.inputValue}
-                        onChange={this.onInputChange} />
-                      <RB.Button type="submit">Add a website</RB.Button>
-                    </form>
-                  </div>
-                  <div className="card-new-container-item">
-                    <RB.Button onClick={this.addTextCard}>
-                      Add a paragraph
-                    </RB.Button>
-                  </div>
-                </div>
-
-              </RB.Col>
-            </RB.Row>
+          <div className='card-new-container'>
+            <div className="card-new-container-item">
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  className="card-url-input"
+                  type="text"
+                  placeholder="Enter URL here"
+                  value={this.state.inputValue}
+                  onChange={this.onInputChange} />
+                <RB.Button type="submit">Add a website</RB.Button>
+              </form>
+            </div>
+            <div className="card-new-container-item">
+              <RB.Button onClick={this.addTextCard}>
+                Add a paragraph
+              </RB.Button>
+            </div>
           </div>
+
         </div>
       </RB.Col>
     );

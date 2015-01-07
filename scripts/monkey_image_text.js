@@ -2,6 +2,7 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  Rectangle = require('./utils/rectangle'),
   RB = require('react-bootstrap');
 
 var MonkeyImageText = React.createClass({
@@ -15,37 +16,34 @@ getRandomBgColor: function(){
 
     var colorClass = this.getRandomBgColor();
 
+    var left = (
+      <img
+        src={card.imgUrl}
+        className="img-responsive"/>
+    );
+    var right = (
+      <div>
+        <h5>
+          {card.title.substring(0,10) + '..'}
+        </h5>
+        <div>
+          {card.content.substring(0,60) + '..'}
+        </div>
+        <div className='card-right-bottom-col'>
+          <a href={card.htmlUrl} target='_blank'>
+            <span className="icon icon-more"></span>
+          </a>
+        </div>
+      </div>
+    );
+
+    //colorClass
+
     return (
-      <RB.Row>
-
-        <RB.Col xs={12} className="two-squares">
-
-          <div className={"square " + colorClass}>
-            <div className="square-inner-center">
-              <img
-                src={card.imgUrl}
-                className="img-responsive"/>
-            </div>
-          </div>
-
-          <div className="square">
-            <div className="square-inner-left">
-              <h5>
-                {card.title.substring(0,10) + '..'}
-              </h5>
-              <div>
-                {card.content.substring(0,60) + '..'}
-              </div>
-              <div className='card-right-bottom-col'>
-                <a href={card.htmlUrl} target='_blank'>
-                  <span className="icon icon-more"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </RB.Col>
-
-      </RB.Row>
+      <Rectangle
+        leftBgColor={colorClass}
+        left={left}
+        right={right} />
     );
   }
 });

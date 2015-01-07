@@ -16,19 +16,27 @@ body {
   padding-top: 50px;
 }
 
-.card-panel {
-  border: 0;
-  border-radius: 0;
-  background-color: transparent;
-
-  .card-panel-body {
-    min-height: 150px;
-    padding: 0;
-    text-align: center;
-    background-color: #F5F5F5;
+.rectangle {
+  background-color: #F5F5F5;
+  position: relative;
+  width: 100%;
+  padding-top: 50%;
+  .content {
+    position: absolute;
+    top:      0;
+    left:     0;
+    bottom:   0;
+    right:    0;
+    display: flex;
+    .left,
+    .right {
+      flex: 1 0 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
-
 
 
 //http://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout

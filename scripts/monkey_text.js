@@ -2,17 +2,16 @@
 var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
+  Rectangle = require('./utils/rectangle'),
   RB = require('react-bootstrap');
 
 var MonkeyText = React.createClass({
   render: function(){
     var card = this.props.card;
     return (
-      <RB.Row>
-        <RB.Col xs={12}>
-          MonkeyText
-        </RB.Col>
-      </RB.Row>
+      <Rectangle
+        left='left'
+        right='right' />
     );
   }
 });

@@ -3,6 +3,7 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   RB = require('react-bootstrap'),
+  Rectangle = require('./utils/rectangle'),
   Actions = require('./actions');
 
 var UrlInput = React.createClass({
@@ -70,35 +71,32 @@ var UrlInput = React.createClass({
   },
 
   render: function() {
+    var left = (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          className="card-url-input"
+          type="text"
+          placeholder="Enter URL here"
+          value={this.state.inputValue}
+          onChange={this.onInputChange} />
+        <RB.Button type="submit">Add a website</RB.Button>
+      </form>
+    );
+
+    var right = (
+      <RB.Button onClick={this.addTextCard}>
+        Add a paragraph
+      </RB.Button>
+    );
+
     var newCard = (
       <RB.Col
         md={6}
         className='card-container'
         onClick={this.onClickNewCard}>
-        <div className="two-squares">
-          <div className="square" />
-          <div className="square" />
-
-          <div className='card-new-container'>
-            <div className="card-new-container-item">
-              <form onSubmit={this.handleSubmit}>
-                <input
-                  className="card-url-input"
-                  type="text"
-                  placeholder="Enter URL here"
-                  value={this.state.inputValue}
-                  onChange={this.onInputChange} />
-                <RB.Button type="submit">Add a website</RB.Button>
-              </form>
-            </div>
-            <div className="card-new-container-item">
-              <RB.Button onClick={this.addTextCard}>
-                Add a paragraph
-              </RB.Button>
-            </div>
-          </div>
-
-        </div>
+        <Rectangle
+          left={left}
+          right={right} />
       </RB.Col>
     );
 

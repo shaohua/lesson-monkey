@@ -34,7 +34,11 @@ var MonkeyImageTextEdit = React.createClass({
     var card = this.props.card;
     var colorClass = this.getRandomBgColor();
 
-    var left = (<img src={card.imgUrl}/>);
+    var left = (
+      <img
+        src={card.imgUrl}
+        className="img-responsive"/>
+    );
     var right = (
       <div>
         <h2>

@@ -6,7 +6,7 @@ var _ = require('underscore'),
   RB = require('react-bootstrap');
 
 var MonkeyImageText = React.createClass({
-getRandomBgColor: function(){
+  getRandomBgColor: function(){
     var bgColorList = ['green-sea', 'nephritis', 'belize-hole', 'wisteria', 'midnight-blue'];
     return _.sample(bgColorList);
   },

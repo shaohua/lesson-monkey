@@ -177,9 +177,15 @@ vent.on('card:update', function(payload){
 });
 
 vent.on('card:move', function(payload){
-  var cardsCopy = deepcopy(Store.get('cards')) || {};
-  cardsCopy[payload.cardId].folderIndex = payload.folderIndex;
-  Store.set('cards', cardsCopy);
+  var foldersCopy = deepcopy(Store.get('folders')) || [];
+  //add to new folder
+  foldersCopy[payload.folderIndex].cardIds = foldersCopy[payload.folderIndex].cardIds || [];
+  foldersCopy[payload.folderIndex].cardIds.push(payload.cardId);
+  //remove from old folder
+  var currentFolderIndex = Store.get('route').params.folderName;
+  foldersCopy[currentFolderIndex].cardIds = _.without(foldersCopy[currentFolderIndex].cardIds, payload.cardId);
+
+  Store.set('folders', foldersCopy);
 });
 
 /**

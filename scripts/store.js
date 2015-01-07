@@ -194,6 +194,31 @@ vent.on('card:move', function(payload){
   Store.set('folders', foldersCopy);
 });
 
+vent.on('card:rearrange', function(payload){
+  var foldersCopy = deepcopy(Store.get('folders')) || [];
+  var currentFolderIndex = Store.get('route').params.folderName;
+
+  var draggingIndex = _.indexOf(foldersCopy[currentFolderIndex].cardIds, payload.draggingCardId);
+
+  var left = foldersCopy[currentFolderIndex].cardIds.slice(0, draggingIndex);
+  var right = foldersCopy[currentFolderIndex].cardIds.slice(draggingIndex + 1);
+
+  //in both cases, insert after the stationary card
+  //left
+  if(_.indexOf(left, payload.stationaryCardId) !== -1){
+    left.splice(_.indexOf(left, payload.stationaryCardId) + 1, 0, payload.draggingCardId);
+  }
+  //right
+  if(_.indexOf(right, payload.stationaryCardId) !== -1){
+    right.splice(_.indexOf(right, payload.stationaryCardId) + 1, 0, payload.draggingCardId);
+  }
+
+  //merge and remove duplicates if any
+  foldersCopy[currentFolderIndex].cardIds = _.union(left, right);
+
+  Store.set('folders', foldersCopy);
+});
+
 /**
  * For Firebase
  */

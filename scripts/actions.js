@@ -37,6 +37,10 @@ var Actions = {
     vent.trigger('card:move', payload);
   },
 
+  rearrangeCard: function(payload){
+    vent.trigger('card:rearrange', payload);
+  },
+
   updateRoute: function(payload){
     vent.trigger('route:update', payload);
   },

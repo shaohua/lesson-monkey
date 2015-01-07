@@ -178,11 +178,17 @@ vent.on('card:update', function(payload){
 
 vent.on('card:move', function(payload){
   var foldersCopy = deepcopy(Store.get('folders')) || [];
+  var currentFolderIndex = Store.get('route').params.folderName;
+
+  //noop
+  if(currentFolderIndex + '' === payload.folderIndex + '') {
+    return;
+  }
+
   //add to new folder
   foldersCopy[payload.folderIndex].cardIds = foldersCopy[payload.folderIndex].cardIds || [];
   foldersCopy[payload.folderIndex].cardIds.push(payload.cardId);
   //remove from old folder
-  var currentFolderIndex = Store.get('route').params.folderName;
   foldersCopy[currentFolderIndex].cardIds = _.without(foldersCopy[currentFolderIndex].cardIds, payload.cardId);
 
   Store.set('folders', foldersCopy);

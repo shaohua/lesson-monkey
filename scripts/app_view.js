@@ -8,7 +8,7 @@ var _ = require('underscore'),
   Link = ReactRouter.Link,
   CurrentPath = ReactRouter.CurrentPath,
   ProfileCard = require('./profile_card'),
-  HomeView = require('./home_view'),
+  HomeView = require('./homepage/home_view'),
   Store = require('./store'),
   Actions = require('./actions');
 
@@ -107,18 +107,12 @@ var AppView = React.createClass({
   render: function() {
     var user = this.state.user || '';
     return (
-      <div>
+      <RB.Grid>
         <Header
           loggedIn={this.state.loggedIn}
           user={user}/>
-        <RB.Grid className='main'>
-          <RB.Row>
-            <RB.Col sm={12}>
-              <RouteHandler data={this.state} />
-            </RB.Col>
-          </RB.Row>
-        </RB.Grid>
-      </div>
+        <RouteHandler data={this.state} />
+      </RB.Grid>
     );
   }
 

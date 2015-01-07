@@ -3,6 +3,7 @@ var _ = require('underscore'),
   $ = require('jquery'),
   React = require('react'),
   RB = require('react-bootstrap'),
+  Rectangle = require('./utils/rectangle'),
   Actions = require('./actions');
 
 var UrlInput = React.createClass({
@@ -10,8 +11,16 @@ var UrlInput = React.createClass({
     return {inputValue: ''};
   },
 
-  handleSubmit: function() {
+  handleSubmit: function(event) {
+    event.preventDefault();
+
     var text = this.state.inputValue;
+
+    //abort if empty
+    if(text === '') {
+      return;
+    }
+
     var encodedUrl = encodeURIComponent(text);
     var embedAPIss = "https://api.embed.ly/1/oembed?key=63048684984941079d74082f802d80cb&url=" + encodedUrl;
 
@@ -20,8 +29,9 @@ var UrlInput = React.createClass({
         this.handleUrlSubmit({
           title: data.title,
           content: data.description,
-          htmlUrl: data.provider_url,
-          imgUrl: data.thumbnail_url
+          htmlUrl: text,  //todo, escape this
+          imgUrl: data.thumbnail_url,
+          type: 'MonkeyImageText'
         });
       }.bind(this));
 
@@ -29,7 +39,6 @@ var UrlInput = React.createClass({
     this.setState({
       inputValue: ''
     });
-    return false;
   },
 
   handleUrlSubmit: function(cardInfo) {
@@ -52,35 +61,46 @@ var UrlInput = React.createClass({
     });
   },
 
+  addTextCard: function(){
+    var textCardInfo = {
+      title: 'your card title',
+      content: 'your card content',
+      type: 'MonkeyText'
+    };
+    Actions.createCard(textCardInfo);
+  },
+
   render: function() {
-    var newCard = (
-      <div
-        onClick={this.onClickNewCard}
-        className="col-lg-6 col-md-6">
-        <div className="panel panel-success card-panel">
-          <div className="panel-body card-panel-body">
-            <RB.Row className='card-row'>
-              <RB.Col xs={12} className="two-squares">
-                <div className="square" />
-                <div className="square" />
+    var left = (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          className="card-url-input"
+          type="text"
+          placeholder="Enter URL here"
+          value={this.state.inputValue}
+          onChange={this.onInputChange} />
+        <RB.Button type="submit">Add a website</RB.Button>
+      </form>
+    );
 
-                <form
-                  className='form-url-input'
-                  onSubmit={this.handleSubmit}>
-                  <input
-                    className="card-url-input"
-                    type="text"
-                    placeholder="Enter URL here"
-                    value={this.state.inputValue}
-                    onChange={this.onInputChange} />
-                  <RB.Button type="submit">Add URL</RB.Button>
-                </form>
-
-              </RB.Col>
-            </RB.Row>
-          </div>
-        </div>
+    // the extra div is necessar to avoid button being stretched
+    var right = (
+      <div>
+        <RB.Button onClick={this.addTextCard}>
+          Add a paragraph
+        </RB.Button>
       </div>
+    );
+
+    var newCard = (
+      <RB.Col
+        md={6}
+        className='card-container'
+        onClick={this.onClickNewCard}>
+        <Rectangle
+          left={left}
+          right={right} />
+      </RB.Col>
     );
 
     return newCard;

@@ -1,202 +1,27 @@
+@import './colors.styl';
 @import './input_editable.styl';
 @import './profile_card.styl';
 @import './mailing_list.styl';
-@import './form_url_input.styl';
+@import './url_input.styl';
+@import './homepage.styl';
+@import './card_pop.styl';
+@import './monkey_text.styl';
+@import './monkey_image_text.styl';
+@import './rectangle.styl';
 
-@media screen and (min-width: 992px) {
-  .home-topic-row,
-  .home-topic-wrapper {
-    //todo, use nib
-    //http://stackoverflow.com/a/22892773/1239621
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex:1 0 auto;
-  }
+html,
+body,
+.main-app {
+  height: 100%;
 }
 
 body {
   background-color: #E5E5E5;
   padding-top: 50px;
-  position: relative !important;
 }
 
-.main {
-  width:100%;
-  height:100%;
-
-  .home-hot-topic-title {
-    font-weight:bold;
-  }
-
-  .home-topic-inner-block {
-    width:100%;
-    background-color:#F5F5F5;
-    padding:5px;
-  }
-
-  .home-topic-image {
-    width:100%;
-  }
-
-  .home-topic-inner-title {
-    padding-top:10px;
-    padding-left:20px;
-    padding-right:20px;
-  }
-
-  .home-topic-inner-content {
-    padding-top:20px;
-    padding-left:10px;
-    padding-right:10px;
-    padding-bottom:10px;
-  }
-
-  .home-search {
-    width: 100%;
-    height: 60px;
-    background-color:#F5F5F5;
-    position: relative;
-
-    .home-search-input {
-      width: 100%;
-      height: 100%;
-      font-size:140%;
-      border:none;
-      margin-bottom: 0;
-    }
-
-    .home-search-button {
-      position: absolute;
-      height: 100%;
-      right: 0;
-      border:none;
-      color:white;
-      font-size:160%;
-      background-color:black;
-    }
-  }
-
-
-}
-
-
-.card-panel {
-  border: 0;
-  border-radius: 0;
-  background-color: transparent;
-
-  .card-panel-body {
-    min-height: 150px;
-    padding: 0;
-    text-align: center;
-    background-color: #F5F5F5;
-  }
-}
-
-
-
-//http://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout
-//https://stackoverflow.com/questions/18516317/vertically-align-an-image-inside-a-div-with-responsive-height
-.two-squares {
-  overflow: hidden;
-  .square {
-    position: relative;
-    float: left;
-    width: 50%;
-    padding-top: 50%;
-    .square-inner-center {
-      position: absolute;
-      top:      0;
-      left:     0;
-      bottom:   0;
-      right:    0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      img {
-        max-height:100%;
-        max-width:100%;
-        display: block;
-      }
-    }
-    .square-inner-left {
-      position: absolute;
-      top:      0;
-      left:     0;
-      bottom:   0;
-      right:    0;
-      display: flex;
-      flex-direction: column;
-      align-items: left;
-      justify-content: space-between;
-      h2 {
-        // todo, find a better way
-        // temp fix for uneven content-editable outline
-        line-height: inherit;
-      }
-    }
-  }
-}
-
-.card-main-text {
-  font-size: 24px;
-}
-
-.card-row {
-  position: relative;
-  &:before, &:after {
-    //remve bootstrap default
-    content: none;
-  }
-  .card-nav-prev {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    margin-left: -12px;
-    margin-top: -36px;
-    cursor: pointer;
-  }
-  .card-nav-next {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-right: -12px;
-    margin-top: -36px;
-    cursor: pointer;
-  }
-  .icon {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    line-height: 50px;
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-  }
-}
-
-
-.green-sea {
-  background-color: #17ab8e !important;
-}
-
-.nephritis {
-  background-color: #27ae60 !important;
-}
-
-.belize-hole {
-  background-color: #2980b9 !important;
-}
-
-.wisteria {
-  background-color: #8e44ad !important;
-}
-
-.midnight-blue {
-  background-color: #8e44ad !important;
+h2 {
+  // todo, find a better way
+  // temp fix for uneven content-editable outline
+  line-height: inherit;
 }

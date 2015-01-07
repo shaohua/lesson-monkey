@@ -5,16 +5,31 @@ var _ = require('underscore'),
   React = require('react'),
   RB = require('react-bootstrap'),
   Folders = require('./folders'),
-  Card = require('./card_pop_view'),
   UrlInput = require('./url_input'),
   Store = require('./store'),
+  Navigation = ReactRouter.Navigation,
+  CardLauncher = require('./card_launcher'),
   Actions = require('./actions');
 
 var FolderPopView = React.createClass({
-  mixins: [ ReactRouter.State ],
+  mixins: [ ReactRouter.State, Navigation ],
 
   getInitialState: function(){
     return {};
+  },
+
+  onNavPrev: function(){
+    var prevRoute = '/' + this.props.userId +
+      '/folder/' + this.props.card.folderIndex +
+      '/card/' + this.props.prevCardId;
+    this.transitionTo(prevRoute);
+  },
+
+  onNavNext: function(){
+    var nextRoute = '/' + this.props.userId +
+      '/folder/' + this.props.card.folderIndex +
+      '/card/' + this.props.nextCardId;
+    this.transitionTo(nextRoute);
   },
 
   render: function() {
@@ -31,7 +46,8 @@ var FolderPopView = React.createClass({
     return (
       <RB.Row>
         <RB.Col sm={12} className='card-pop'>
-          <Card
+          <CardLauncher
+            type = {card.type + 'Edit'}
             isEditable={this.props.data.isEditable}
             cardId={card.id}
             prevCardId={prevCardId}

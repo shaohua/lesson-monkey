@@ -59,8 +59,9 @@ module.exports = function(grunt) {
         ],
         tasks: ['stylus', 'browserify']
       }
-    }
+    },
+    clean: ['<%= opts.path %>/dist']
   });
 
-  grunt.registerTask('default', ['stylus', 'browserify', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean', 'stylus', 'browserify', 'connect', 'watch']);
 };

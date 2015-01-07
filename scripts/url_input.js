@@ -83,10 +83,13 @@ var UrlInput = React.createClass({
       </form>
     );
 
+    // the extra div is necessar to avoid button being stretched
     var right = (
-      <RB.Button onClick={this.addTextCard}>
-        Add a paragraph
-      </RB.Button>
+      <div>
+        <RB.Button onClick={this.addTextCard}>
+          Add a paragraph
+        </RB.Button>
+      </div>
     );
 
     var newCard = (

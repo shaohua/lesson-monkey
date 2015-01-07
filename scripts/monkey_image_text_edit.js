@@ -40,7 +40,7 @@ var MonkeyImageTextEdit = React.createClass({
         className="img-responsive"/>
     );
     var right = (
-      <div>
+      <div className='card-right'>
         <h2>
           <ContentEditable
             isEditable={this.props.isEditable}

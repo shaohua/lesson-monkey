@@ -22,7 +22,7 @@ var MonkeyImageText = React.createClass({
         className="img-responsive"/>
     );
     var right = (
-      <div>
+      <div className='card-right'>
         <h5>
           {card.title.substring(0,10) + '..'}
         </h5>

@@ -152,13 +152,22 @@ vent.on('card:create', function(payload){
     }
   }
 
+  var cardId = getUid();
+
   payload.folderIndex = currentFolderIndex;
-  payload.id = getUid();
+  payload.id = cardId;
 
   var cardsCopy = deepcopy(Store.get('cards')) || {};
-  cardsCopy[payload.id] = payload;
+  cardsCopy[cardId] = payload;
 
-  Store.set('cards', cardsCopy);
+  var foldersCopy = deepcopy(Store.get('folders')) || [];
+  foldersCopy[currentFolderIndex].cardIds = foldersCopy[currentFolderIndex].cardIds || [];
+  foldersCopy[currentFolderIndex].cardIds.push(cardId);
+
+  Store.set({
+    'cards':cardsCopy,
+    'folders':foldersCopy
+  });
 });
 
 vent.on('card:update', function(payload){

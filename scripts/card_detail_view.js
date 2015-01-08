@@ -21,14 +21,14 @@ var FolderPopView = React.createClass({
   onNavPrev: function(){
     var prevRoute = '/' + this.getParams().userId +
       '/folder/' + this.getParams().folderName +
-      '/card/' + this.props.prevCardId;
+      '/card/' + this.state.prevCardId;
     this.transitionTo(prevRoute);
   },
 
   onNavNext: function(){
     var nextRoute = '/' + this.getParams().userId +
       '/folder/' + this.getParams().folderName +
-      '/card/' + this.props.nextCardId;
+      '/card/' + this.state.nextCardId;
     this.transitionTo(nextRoute);
   },
 
@@ -38,30 +38,25 @@ var FolderPopView = React.createClass({
   },
   getStateFromProps: function(props){
     return {
-      prevCardId: this.getAdjacentCardId('prev'),
-      nextCardId: this.getAdjacentCardId('next'),
+      prevCardId: this.getAdjacentCardId('prev', props.data),
+      nextCardId: this.getAdjacentCardId('next', props.data),
       data: props.data
     };
   },
 
-  getAdjacentCardId: function(adjacent){
-    if(_.isUndefined(this.state) || _.isNull(this.state)){
+  getAdjacentCardId: function(adjacent, data){
+    //guard
+    if(_.isUndefined(data.folders)){
       return '';
     }
-
-    if(_.isUndefined(this.state.data.folders)){
-      return '';
-    }
-
-    console.log('this.state', this.state);
-
-    var cards = this.state.data && this.state.data.cards;
 
     var  folderName = this.getParams().folderName,
       userId = this.getParams().userId,
       cardId = this.getParams().cardId,
-      currentFolder = this.state.data.folders[folderName],
-      cardIds = currentFolder.cardIds,
+      cards = data.cards,
+      currentFolder = data.folders[folderName];
+
+    var cardIds = currentFolder.cardIds,
       card = cards[cardId];
 
     //similar to pageNumber
@@ -75,13 +70,10 @@ var FolderPopView = React.createClass({
     }else{
       return nextCardId;
     }
-
   },
 
   render: function() {
     //use this.state.data instead of this.props.data due to react router
-    console.log('card detail', this.state);
-
     var cards = this.state.data && this.state.data.cards;
     if (typeof cards === 'undefined') return (<div/>);
 
@@ -92,11 +84,17 @@ var FolderPopView = React.createClass({
       cardIds = currentFolder.cardIds,
       card = cards[cardId];
 
-    //similar to pageNumber
-    var cardNumber = _.indexOf(cardIds, cardId);
-
-    var prevCardId = cardIds[cardNumber - 1],
-      nextCardId = cardIds[cardNumber + 1];
+    var prevCardId = this.state.prevCardId,
+      nextCardId = this.state.nextCardId;
+    var cx = React.addons.classSet;
+    var prevClasses = cx({
+      "card-nav-prev": true,
+      "hidden": _.isUndefined(prevCardId) || prevCardId === ''
+    });
+    var nextClasses = cx({
+      "card-nav-next": true,
+      "hidden": _.isUndefined(nextCardId) || nextCardId === ''
+    });
 
     return (
       <RB.Row>
@@ -104,20 +102,15 @@ var FolderPopView = React.createClass({
           <CardLauncher
             type = {card.type + 'Edit'}
             isEditable={this.state.data.isEditable}
-            cardId={card.id}
-            prevCardId={prevCardId}
-            nextCardId={nextCardId}
-            folderName={folderName}
-            userId={userId}
             card={card} />
           <div
             onClick={this.onNavPrev}
-            className="card-nav-prev">
+            className={prevClasses}>
             <span className="icon icon-left-nav"></span>
           </div>
           <div
             onClick={this.onNavNext}
-            className="card-nav-next">
+            className={nextClasses}>
             <span className="icon icon-right-nav"></span>
           </div>
         </RB.Col>

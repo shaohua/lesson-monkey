@@ -87,16 +87,14 @@ var CardDetailView = React.createClass({
     //use this.state.data instead of this.props.data due to react router
     var card = this.state.card;
 
-    var prevCardId = this.state.prevCardId,
-      nextCardId = this.state.nextCardId;
     var cx = React.addons.classSet;
     var prevClasses = cx({
       "card-nav-prev": true,
-      "hidden": _.isUndefined(prevCardId)
+      "hidden": _.isUndefined(this.state.prevCardId)
     });
     var nextClasses = cx({
       "card-nav-next": true,
-      "hidden": _.isUndefined(nextCardId)
+      "hidden": _.isUndefined(this.state.nextCardId)
     });
 
     return (

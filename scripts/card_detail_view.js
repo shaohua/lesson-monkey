@@ -38,30 +38,41 @@ var FolderPopView = React.createClass({
   },
   getStateFromProps: function(props){
     return {
+      data: props.data,
       prevCardId: this.getAdjacentCardId('prev', props.data),
       nextCardId: this.getAdjacentCardId('next', props.data),
-      data: props.data
+      card: this.getCurrentCard(props.data)
     };
   },
 
-  getAdjacentCardId: function(adjacent, data){
+  getCurrentCard: function(data){
     //guard
-    if(_.isUndefined(data.folders)){
-      return '';
+    if(_.isUndefined(data.cards)){
+      return {};
     }
 
-    var  folderName = this.getParams().folderName,
-      userId = this.getParams().userId,
-      cardId = this.getParams().cardId,
-      cards = data.cards,
-      currentFolder = data.folders[folderName];
+    var cardId = this.getParams().cardId;
+    return data.cards[cardId] || {};
+  },
 
-    var cardIds = currentFolder.cardIds,
-      card = cards[cardId];
+  getCurrentFolder: function(data){
+    //guard
+    if(_.isUndefined(data.folders)){
+      return {};
+    }
+
+    var  folderName = this.getParams().folderName;
+    return data.folders[folderName] || {};
+  },
+
+  getAdjacentCardId: function(adjacent, data){
+    var currentFolder = this.getCurrentFolder(data),
+      cardIds = currentFolder.cardIds || [];
 
     //similar to pageNumber
-    var cardNumber = _.indexOf(cardIds, cardId);
+    var cardNumber = _.indexOf(cardIds, this.getParams().cardId);
 
+    //note, can be out of bounds
     var prevCardId = cardIds[cardNumber - 1],
       nextCardId = cardIds[cardNumber + 1];
 
@@ -74,15 +85,7 @@ var FolderPopView = React.createClass({
 
   render: function() {
     //use this.state.data instead of this.props.data due to react router
-    var cards = this.state.data && this.state.data.cards;
-    if (typeof cards === 'undefined') return (<div/>);
-
-    var  folderName = this.getParams().folderName,
-      userId = this.getParams().userId,
-      cardId = this.getParams().cardId,
-      currentFolder = this.state.data.folders[folderName],
-      cardIds = currentFolder.cardIds,
-      card = cards[cardId];
+    var card = this.state.card;
 
     var prevCardId = this.state.prevCardId,
       nextCardId = this.state.nextCardId;

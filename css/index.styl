@@ -4,7 +4,7 @@
 @import './mailing_list.styl';
 @import './url_input.styl';
 @import './homepage.styl';
-@import './card_pop.styl';
+@import './card_detail.styl';
 @import './monkey_text.styl';
 @import './monkey_image_text.styl';
 @import './rectangle.styl';
@@ -24,4 +24,14 @@ h2 {
   // todo, find a better way
   // temp fix for uneven content-editable outline
   line-height: inherit;
+}
+
+//todo
+//this changes the size of the card
+.card-being-dropped {
+  border-right: 1px solid green;
+}
+
+.card-is-dragging {
+  opacity: 0.3;
 }

@@ -105,8 +105,20 @@ vent.on('auth:logout', function(){
  * For route
  */
 vent.on('route:update', function(payload){
-  Store && Store.set('route', payload);
-  // console.log('payload', payload);
+  if(_.isUndefined(Store)){
+    return;
+  }
+
+  if(payload.params && payload.params.folderName) {
+    Store.set({
+      'folderIndex': payload.params.folderName,
+      'route': payload
+    });
+  }else{
+    Store.set({
+      'route': payload
+    });
+  }
 });
 
 /**
@@ -152,13 +164,22 @@ vent.on('card:create', function(payload){
     }
   }
 
+  var cardId = getUid();
+
   payload.folderIndex = currentFolderIndex;
-  payload.id = getUid();
+  payload.id = cardId;
 
   var cardsCopy = deepcopy(Store.get('cards')) || {};
-  cardsCopy[payload.id] = payload;
+  cardsCopy[cardId] = payload;
 
-  Store.set('cards', cardsCopy);
+  var foldersCopy = deepcopy(Store.get('folders')) || [];
+  foldersCopy[currentFolderIndex].cardIds = foldersCopy[currentFolderIndex].cardIds || [];
+  foldersCopy[currentFolderIndex].cardIds.push(cardId);
+
+  Store.set({
+    'cards':cardsCopy,
+    'folders':foldersCopy
+  });
 });
 
 vent.on('card:update', function(payload){
@@ -168,9 +189,46 @@ vent.on('card:update', function(payload){
 });
 
 vent.on('card:move', function(payload){
-  var cardsCopy = deepcopy(Store.get('cards')) || {};
-  cardsCopy[payload.cardId].folderIndex = payload.folderIndex;
-  Store.set('cards', cardsCopy);
+  var foldersCopy = deepcopy(Store.get('folders')) || [];
+  var currentFolderIndex = Store.get('folderIndex') || 0;
+
+  //noop
+  if(currentFolderIndex + '' === payload.folderIndex + '') {
+    return;
+  }
+
+  //add to new folder
+  foldersCopy[payload.folderIndex].cardIds = foldersCopy[payload.folderIndex].cardIds || [];
+  foldersCopy[payload.folderIndex].cardIds.push(payload.cardId);
+  //remove from old folder
+  foldersCopy[currentFolderIndex].cardIds = _.without(foldersCopy[currentFolderIndex].cardIds, payload.cardId);
+
+  Store.set('folders', foldersCopy);
+});
+
+vent.on('card:rearrange', function(payload){
+  var foldersCopy = deepcopy(Store.get('folders')) || [];
+  var currentFolderIndex = Store.get('folderIndex') || 0;
+
+  var draggingIndex = _.indexOf(foldersCopy[currentFolderIndex].cardIds, payload.draggingCardId);
+
+  var left = foldersCopy[currentFolderIndex].cardIds.slice(0, draggingIndex);
+  var right = foldersCopy[currentFolderIndex].cardIds.slice(draggingIndex + 1);
+
+  //in both cases, insert after the stationary card
+  //left
+  if(_.indexOf(left, payload.stationaryCardId) !== -1){
+    left.splice(_.indexOf(left, payload.stationaryCardId) + 1, 0, payload.draggingCardId);
+  }
+  //right
+  if(_.indexOf(right, payload.stationaryCardId) !== -1){
+    right.splice(_.indexOf(right, payload.stationaryCardId) + 1, 0, payload.draggingCardId);
+  }
+
+  //merge and remove duplicates if any
+  foldersCopy[currentFolderIndex].cardIds = _.union(left, right);
+
+  Store.set('folders', foldersCopy);
 });
 
 /**

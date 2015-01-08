@@ -16,6 +16,7 @@ var Folders = React.createClass({
     var folders = this.props.data.folders;
     var allFolders = _.map(folders, function(folder, index){
       return <Folder
+        key={index}
         domIndex={index}
         activeFolderIndex={this.props.folderIndex}
         folderName={folder.name}

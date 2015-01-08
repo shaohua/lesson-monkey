@@ -33,8 +33,14 @@ var FolderDetailView = React.createClass({
       });
     }
 
-    var cardsRendered = _.map(cardsInCurrentFolder, function(card){
-      return (<Card cardId={card.id} card={card} params={this.getParams()}/>);
+    var cardsRendered = _.map(cardsInCurrentFolder, function(card, index){
+      return (
+        <Card
+          cardId={card.id}
+          card={card}
+          params={this.getParams()}
+          key={index} />
+      );
     }, this);
 
 

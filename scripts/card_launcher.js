@@ -16,33 +16,33 @@ var CardLauncher = React.createClass({
       case 'MonkeyImageText':
         component = (
           <MonkeyImageText
-            card = {this.props.card} />
+            {...this.props} />
         );
         break;
       case 'MonkeyImageTextEdit':
         component = (
           <MonkeyImageTextEdit
-            isEditable = {true}
-            card = {this.props.card} />
+            {...this.props}
+            isEditable = {true} />
         );
         break;
       case 'MonkeyText':
         component = (
           <MonkeyText
-            card = {this.props.card} />
+            {...this.props} />
         );
         break;
       case 'MonkeyTextEdit':
         component = (
           <MonkeyTextEdit
-            isEditable = {true}
-            card = {this.props.card} />
+            {...this.props}
+            isEditable = {true} />
         );
         break;
       default:
         component = (
           <MonkeyText
-            card = {this.props.card} />
+            {...this.props} />
         );
         break;
     }

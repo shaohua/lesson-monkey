@@ -66,22 +66,10 @@ var MonkeyImageTextEdit = React.createClass({
     );
 
     return (
-      <div className='card-row'>
-        <Rectangle
-          leftBgColor={colorClass}
-          left={left}
-          right={right} />
-        <div
-          onClick={this.onNavPrev}
-          className="card-nav-prev">
-          <span className="icon icon-left-nav"></span>
-        </div>
-        <div
-          onClick={this.onNavNext}
-          className="card-nav-next">
-          <span className="icon icon-right-nav"></span>
-        </div>
-      </div>
+      <Rectangle
+        leftBgColor={colorClass}
+        left={left}
+        right={right} />
     );
   }
 });

@@ -105,8 +105,20 @@ vent.on('auth:logout', function(){
  * For route
  */
 vent.on('route:update', function(payload){
-  Store && Store.set('route', payload);
-  // console.log('payload', payload);
+  if(_.isUndefined(Store)){
+    return;
+  }
+
+  if(payload.params && payload.params.folderName) {
+    Store.set({
+      'folderIndex': payload.params.folderName,
+      'route': payload
+    });
+  }else{
+    Store.set({
+      'route': payload
+    });
+  }
 });
 
 /**

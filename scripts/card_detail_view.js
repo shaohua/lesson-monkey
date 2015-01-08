@@ -11,7 +11,7 @@ var _ = require('underscore'),
   CardLauncher = require('./card_launcher'),
   Actions = require('./actions');
 
-var FolderPopView = React.createClass({
+var CardDetailView = React.createClass({
   mixins: [ ReactRouter.State, Navigation ],
 
   getInitialState: function(){
@@ -122,4 +122,4 @@ var FolderPopView = React.createClass({
   }
 });
 
-module.exports = FolderPopView;
+module.exports = CardDetailView;

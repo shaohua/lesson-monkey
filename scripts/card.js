@@ -89,10 +89,8 @@ var Card = React.createClass({
   },
 
   onClickCard: function(){
-    //todo
-    //get everything from route
     var nextRoute = '/' + this.props.params.userId +
-      '/folder/' + this.props.card.folderIndex +
+      '/folder/' + this.props.params.folderName +
       '/card/' + this.props.card.id;
     this.transitionTo(nextRoute);
   },

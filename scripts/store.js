@@ -190,7 +190,7 @@ vent.on('card:update', function(payload){
 
 vent.on('card:move', function(payload){
   var foldersCopy = deepcopy(Store.get('folders')) || [];
-  var currentFolderIndex = Store.get('route').params.folderName;
+  var currentFolderIndex = Store.get('folderIndex') || 0;
 
   //noop
   if(currentFolderIndex + '' === payload.folderIndex + '') {
@@ -208,7 +208,7 @@ vent.on('card:move', function(payload){
 
 vent.on('card:rearrange', function(payload){
   var foldersCopy = deepcopy(Store.get('folders')) || [];
-  var currentFolderIndex = Store.get('route').params.folderName;
+  var currentFolderIndex = Store.get('folderIndex') || 0;
 
   var draggingIndex = _.indexOf(foldersCopy[currentFolderIndex].cardIds, payload.draggingCardId);
 

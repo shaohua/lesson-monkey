@@ -92,11 +92,11 @@ var CardDetailView = React.createClass({
     var cx = React.addons.classSet;
     var prevClasses = cx({
       "card-nav-prev": true,
-      "hidden": _.isUndefined(prevCardId) || prevCardId === ''
+      "hidden": _.isUndefined(prevCardId)
     });
     var nextClasses = cx({
       "card-nav-next": true,
-      "hidden": _.isUndefined(nextCardId) || nextCardId === ''
+      "hidden": _.isUndefined(nextCardId)
     });
 
     return (

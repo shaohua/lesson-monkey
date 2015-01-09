@@ -1,13 +1,5 @@
 //https://github.com/facebook/react/blob/master/docs/_js/live_editor.js
-var IS_MOBILE = (
-  navigator.userAgent.match(/Android/i)
-    || navigator.userAgent.match(/webOS/i)
-    || navigator.userAgent.match(/iPhone/i)
-    || navigator.userAgent.match(/iPad/i)
-    || navigator.userAgent.match(/iPod/i)
-    || navigator.userAgent.match(/BlackBerry/i)
-    || navigator.userAgent.match(/Windows Phone/i)
-);
+var IS_MOBILE = require('./browser_tools').isMobile();
 
 var CodeMirrorEditor = React.createClass({
   componentDidMount: function() {

@@ -8,26 +8,23 @@ var _ = require('underscore'),
   CodeMirrorEditor = require('./utils/code_mirror_editor'),
   RB = require('react-bootstrap');
 
-var MonkeyCode = React.createClass({
-  getInitialState: function(){
-    return {
-      code: 'var happy = "ever after"'
-    };
-  },
-
+var MonkeyCodeEdit = React.createClass({
   handleTitleChange: function(event){
     var cardCopy = JSON.parse(JSON.stringify(this.props.card));
     cardCopy.title = event.target.value;
     Actions.updateCard(cardCopy);
   },
 
-  handleCodeChange: function(){
-    console.log('handleCodeChange');
+  handleCodeChange: function(event){
+    var cardCopy = JSON.parse(JSON.stringify(this.props.card));
+    cardCopy.content = event.target.value;
+    Actions.updateCard(cardCopy);
   },
 
   render: function(){
     var card = this.props.card;
 
+    //key is important for the editor
     var content = (
       <div className='monkey-code-container'>
         <h2>
@@ -37,8 +34,9 @@ var MonkeyCode = React.createClass({
             html={card.title} />
         </h2>
         <CodeMirrorEditor
+          key={card.id}
           onChange={this.handleCodeChange}
-          codeText={this.state.code} />
+          codeText={card.content} />
       </div>
     );
 
@@ -49,4 +47,4 @@ var MonkeyCode = React.createClass({
   }
 });
 
-module.exports = MonkeyCode;
+module.exports = MonkeyCodeEdit;

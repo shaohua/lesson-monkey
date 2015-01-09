@@ -8,16 +8,6 @@ var _ = require('underscore'),
   RB = require('react-bootstrap');
 
 var MonkeyCode = React.createClass({
-  getInitialState: function(){
-    return {
-      code: 'var happy = "ever after"'
-    };
-  },
-
-  handleCodeChange: function(){
-    console.log('handleCodeChange');
-  },
-
   render: function(){
     var card = this.props.card;
 
@@ -29,8 +19,8 @@ var MonkeyCode = React.createClass({
             html={card.title} />
         </h2>
         <CodeMirrorEditor
-          onChange={this.handleCodeChange}
-          codeText={this.state.code} />
+          readOnly={true}
+          codeText={card.content} />
       </div>
     );
 

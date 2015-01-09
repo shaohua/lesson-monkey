@@ -23,6 +23,11 @@ var MonkeyCode = React.createClass({
 
     var content = (
       <div className='monkey-code-container'>
+        <h2>
+          <ContentEditable
+            isEditable={false}
+            html={card.title} />
+        </h2>
         <CodeMirrorEditor
           onChange={this.handleCodeChange}
           codeText={this.state.code} />

@@ -70,6 +70,15 @@ var UrlInput = React.createClass({
     Actions.createCard(textCardInfo);
   },
 
+  addCodeCard: function(){
+    var codeCardInfo = {
+      title: 'your card title',
+      content: 'your card content',
+      type: 'MonkeyCode'
+    };
+    Actions.createCard(codeCardInfo);
+  },
+
   render: function() {
     var left = (
       <form onSubmit={this.handleSubmit}>
@@ -88,6 +97,9 @@ var UrlInput = React.createClass({
       <div>
         <RB.Button onClick={this.addTextCard}>
           Add a paragraph
+        </RB.Button>
+        <RB.Button onClick={this.addCodeCard}>
+          Add a piece of code
         </RB.Button>
       </div>
     );

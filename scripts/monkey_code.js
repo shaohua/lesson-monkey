@@ -19,7 +19,7 @@ var MonkeyCode = React.createClass({
             html={card.title} />
         </h2>
         <CodeMirrorEditor
-          readOnly={true}
+          isEditable={false}
           codeText={card.content} />
       </div>
     );

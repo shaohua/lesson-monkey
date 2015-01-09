@@ -35,6 +35,7 @@ var MonkeyCodeEdit = React.createClass({
         </h2>
         <CodeMirrorEditor
           key={card.id}
+          isEditable={true}
           onChange={this.handleCodeChange}
           codeText={card.content} />
       </div>

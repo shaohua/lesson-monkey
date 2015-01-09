@@ -12,19 +12,19 @@ var CodeMirrorEditor = React.createClass({
       smartIndent: true,
       matchBrackets: true,
       theme: 'monokai',
-      readOnly: this.props.readOnly
+      readOnly: !this.props.isEditable
     });
     this.editor.on('change', this.handleChange);
   },
 
   componentDidUpdate: function() {
-    if (this.props.readOnly) {
+    if (!this.props.isEditable) {
       this.editor.setValue(this.props.codeText);
     }
   },
 
   handleChange: function() {
-    if (!this.props.readOnly) {
+    if (this.props.isEditable) {
       this.props.onChange && this.props.onChange({
         target: {
           value: this.editor.getValue()

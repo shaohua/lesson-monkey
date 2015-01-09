@@ -73,7 +73,7 @@ var UrlInput = React.createClass({
   addCodeCard: function(){
     var codeCardInfo = {
       title: 'your card title',
-      content: 'your card content',
+      content: 'int i = 0;',
       type: 'MonkeyCode'
     };
     Actions.createCard(codeCardInfo);

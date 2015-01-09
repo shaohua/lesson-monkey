@@ -14,10 +14,10 @@ var CodeMirrorEditor = React.createClass({
     if (IS_MOBILE) return;
 
     this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), {
-      mode: 'javascript',
+      mode: 'text/x-java',
       lineNumbers: false,
       lineWrapping: true,
-      smartIndent: false,  // javascript mode does bad things with jsx indents
+      smartIndent: true,
       matchBrackets: true,
       theme: 'monokai',
       readOnly: this.props.readOnly

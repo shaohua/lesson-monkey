@@ -70,6 +70,27 @@ var Folder = React.createClass({
 
   exportPdf: function(){
     // console.log('exportPdf');
+    var doc = new jsPDF('p', 'in', 'letter');
+    var source = $('.col-sm-9')[0];
+    var specialElementHandlers = {
+      '.hidden-for-pdf': function(element, renderer){
+        return true;
+      }
+    };
+
+    doc.fromHTML(
+      source,
+      0,
+      0,
+      {
+        'width': 7.5,
+        'elementHandlers': specialElementHandlers
+      },
+      function(){
+        doc.save('dataurl');
+      }
+    );
+
   },
 
   render: function(){
@@ -81,7 +102,7 @@ var Folder = React.createClass({
     });
 
     var folderUrl = '/' + this.props.userId +
-                    '/folder/' + this.props.domIndex ;
+                    '/folder/' + this.props.domIndex;
 
     return (
       <Link to={folderUrl}

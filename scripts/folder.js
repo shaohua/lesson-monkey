@@ -68,6 +68,10 @@ var Folder = React.createClass({
     }
   },
 
+  exportPdf: function(){
+    // console.log('exportPdf');
+  },
+
   render: function(){
     var cx = React.addons.classSet;
     var classes = cx({
@@ -87,6 +91,7 @@ var Folder = React.createClass({
         className={classes}>
           <RB.Glyphicon glyph="folder-open" />&nbsp;
           <RB.Glyphicon onClick={this.toggleFolderEditable} glyph="edit" />&nbsp;
+          <RB.Glyphicon onClick={this.exportPdf} glyph="cloud-download" />&nbsp;
           <InputEditable
             isEditable={this.state.isFolderEditable}
             onChange={this.editFolderName}

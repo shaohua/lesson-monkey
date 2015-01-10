@@ -25,6 +25,7 @@
     "ratchet-icons": "*",
     "firebase": "~2.0.0",
     "backfire": "~0.3.0",
-    "codemirror": "~4.10.0"
+    "codemirror": "~4.10.0",
+    "jspdf": "~1.0.272"
   }
 }

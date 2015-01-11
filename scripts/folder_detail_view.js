@@ -45,7 +45,7 @@ var FolderDetailView = React.createClass({
 
 
     return (
-      <RB.Row>
+      <RB.Row className='folder-detail'>
         <UrlInput />
         {cardsRendered}
       </RB.Row>

@@ -68,24 +68,26 @@ var Folder = React.createClass({
     }
   },
 
+  //https://github.com/MrRio/jsPDF/blob/master/jspdf.plugin.addhtml.js
+  //https://github.com/MrRio/jsPDF/issues/339
   exportPdf: function(){
     // console.log('exportPdf');
-    var doc = new jsPDF('p', 'in', 'letter');
-    var source = $('.col-sm-9')[0];
+    var doc = new jsPDF('landscape', 'pt', 'letter');
+    var options = {
+      pagesplit: true
+    };
+    var source = $('.folder-detail')[0];
     var specialElementHandlers = {
       '.hidden-for-pdf': function(element, renderer){
         return true;
       }
     };
 
-    doc.fromHTML(
+    doc.addHTML(
       source,
       0,
       0,
-      {
-        'width': 7.5,
-        'elementHandlers': specialElementHandlers
-      },
+      options,
       function(){
         doc.save('dataurl');
       }

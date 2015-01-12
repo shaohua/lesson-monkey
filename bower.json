@@ -27,6 +27,7 @@
     "backfire": "~0.3.0",
     "codemirror": "~4.10.0",
     "jspdf": "~1.0.272",
-    "html2canvas": "~0.4.1"
+    "html2canvas": "~0.4.1",
+    "blueimp-canvas-to-blob": "~2.1.1"
   }
 }

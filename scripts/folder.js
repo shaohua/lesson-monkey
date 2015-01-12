@@ -111,20 +111,67 @@ var Folder = React.createClass({
       return dfd.promise();
     };
 
-    html2canvasP(document.body).then(function(canvas){
-      // https://github.com/MrRio/jsPDF/issues/339
-      canvas.toBlob(function(blob){
-        var img = new Image();
-        var urlCreator = window.URL || window.webkitURL;
-        img.src = urlCreator.createObjectURL(blob);
-        img.onload = function(){
-          var pdf = new jsPDF('l', 'pt', [img.height, img.width]);
-          pdf.addImage(img, 0, 0, img.width,img.height);
-          pdf.save('myPdf.pdf');
-        };
+    var promises = [];
+    $('.card-container').each(function(index, element){
+      promises.push(html2canvasP(element));
+    });
+
+    //jQuery helper
+    var all = function(deferreds) {
+      var deferred = new jQuery.Deferred();
+      $.when.apply(jQuery, deferreds).then(
+        function() {
+          deferred.resolve(Array.prototype.slice.call(arguments));
+        },
+        function() {
+          deferred.fail(Array.prototype.slice.call(arguments));
+        });
+
+      return deferred;
+    };
+
+    var imagePromises = [];
+    all(promises).then(function(images) {
+      imagePromises = _.map(images, function(imageCanvasData){
+        var dfd = $.Deferred();
+
+        imageCanvasData.toBlob(function(blob){
+          var img = new Image();
+          var urlCreator = window.URL || window.webkitURL;
+          img.src = urlCreator.createObjectURL(blob);
+          img.onload = function(){
+            dfd.resolve(img);
+          };
+        });
+
+        return dfd;
       });
 
+      all(imagePromises).then(function(images){
+        _.each(images, function(image){
+          doc.addPage();
+          doc.addImage(image, 0, 0, image.width, image.height);
+        });
+
+        //finally output
+        doc.save('myPdf.pdf');
+      });
     });
+
+    // html2canvasP(document.body).then(function(canvas){
+    //   // https://github.com/MrRio/jsPDF/issues/339
+    //   canvas.toBlob(function(blob){
+    //     var img = new Image();
+    //     var urlCreator = window.URL || window.webkitURL;
+    //     img.src = urlCreator.createObjectURL(blob);
+    //     img.onload = function(){
+    //       var pdf = new jsPDF('l', 'pt', [img.height, img.width]);
+    //       pdf.addImage(img, 0, 0, img.width,img.height);
+    //       pdf.save('myPdf.pdf');
+    //     };
+    //   });
+
+    // });
 
 
   },

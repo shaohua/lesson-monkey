@@ -95,6 +95,40 @@ var Folder = React.createClass({
 
   },
 
+  exportPdfManual: function(){
+    var doc = new jsPDF('landscape', 'pt', 'letter');
+
+    var html2canvasP = function(element, options){
+      var dfd = $.Deferred();
+      var optionsP = _.extend({}, options, {
+        onrendered: function(canvas) {
+          dfd.resolve(canvas);
+        }
+      });
+
+      html2canvas(element, optionsP);
+
+      return dfd.promise();
+    };
+
+    html2canvasP(document.body).then(function(canvas){
+      // https://github.com/MrRio/jsPDF/issues/339
+      canvas.toBlob(function(blob){
+        var img = new Image();
+        var urlCreator = window.URL || window.webkitURL;
+        img.src = urlCreator.createObjectURL(blob);
+        img.onload = function(){
+          var pdf = new jsPDF('l', 'pt', [img.height, img.width]);
+          pdf.addImage(img, 0, 0, img.width,img.height);
+          pdf.save('myPdf.pdf');
+        };
+      });
+
+    });
+
+
+  },
+
   render: function(){
     var cx = React.addons.classSet;
     var classes = cx({
@@ -114,7 +148,7 @@ var Folder = React.createClass({
         className={classes}>
           <RB.Glyphicon glyph="folder-open" />&nbsp;
           <RB.Glyphicon onClick={this.toggleFolderEditable} glyph="edit" />&nbsp;
-          <RB.Glyphicon onClick={this.exportPdf} glyph="cloud-download" />&nbsp;
+          <RB.Glyphicon onClick={this.exportPdfManual} glyph="cloud-download" />&nbsp;
           <InputEditable
             isEditable={this.state.isFolderEditable}
             onChange={this.editFolderName}
